@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<style type="text/css">
+			#wrap p { margin-bottom: 0;}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="wrap" style="text-align: center;"></div>
+		</div>
+		<script>
+			var oWrap = document.getElementById('wrap')
+			var length = 5;
+			for(var i = 0; i < length; i++) {
+				var x = 2 * i + 1;
+				var str = "<p>"
+				for(var j = 0; j < x; j++) {
+					str += "<i class='glyphicon glyphicon-heart-empty'></i>"
+				}
+				str += "</p>"
+
+				oWrap.innerHTML += str
+			}
+		</script>
+	</body>
+
+</html>

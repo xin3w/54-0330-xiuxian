@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<style type="text/css">
+			.btn { width: 100px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>第一种</h1>
+			<div id="one"></div>
+			<hr />
+			<h1>第二种</h1>
+			<div id="two"></div>
+			<hr />
+			<h1>第三种</h1>
+			<div id="three"></div>
+			<hr />
+			<h1>第四种</h1>
+			<div id="four"></div>
+			<hr />
+		</div>
+		<script>
+			//实现99乘法表
+			//第一种
+			var one=document.getElementById('one')
+			for (var i=1;i<=9;i++) {
+				for (var j=1;j<=i;j++){
+					one.innerHTML+='<button type="button" class="btn btn-primary">'+i+'*'+j+'='+i*j+'</button>'
+				}
+				one.innerHTML+="<br />"
+
+			}
+			
+			//第二种
+			var two=document.getElementById('two')
+			for (var i=1;i<=9;i++) {
+				for (var j=i;j<=9;j++){
+					two.innerHTML+='<button type="button" class="btn btn-warning">'+i+'*'+j+'='+i*j+'</button>'
+				}
+				two.innerHTML+="<br />"
+
+			}
+			
+			//第三种
+			var three=document.getElementById('three')
+			for (var i=9;i>=1;i--) {
+				for (var j=1;j<=i;j++){
+					three.innerHTML+='<button type="button" class="btn btn-success">'+i+'*'+j+'='+i*j+'</button>'
+				}
+				three.innerHTML+="<br />"
+
+			}
+			
+			//第三种
+			var four=document.getElementById('four')
+			for (var i=9;i>=1;i--) {
+				for (var j=i;j<=9;j++){
+					four.innerHTML+='<button type="button" class="btn btn-danger">'+i+'*'+j+'='+i*j+'</button>'
+				}
+				four.innerHTML+="<br />"
+
+			}
+		</script>
+	</body>
+
+</html>
