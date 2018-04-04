@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<style>
+		#wrap p {
+			margin-bottom: 0;
+		}
+	</style>
+</head>
 
-	<body>
-		<div class="container">
-			<div id="wrap"></div>
+<body>
+	<div class="container">
+		<div class="input-group">
+			<input type="number" name="" id="input" class="form-control" value="" min="20" max="40" step="" required="required" title="">
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default" id="btn">Go!</button>
+			</span>
 		</div>
-		<script>
-			//实现99乘法表
-		</script>
-	</body>
+		<div id="wrap" style="text-align: center;"></div>
+	</div>
+	<script>
+		var oIpt = document.getElementById('input');
+		var oBtn = document.getElementById('btn');
+		var oWrap = document.getElementById('wrap');
+		oBtn.onclick = function () {
+			var length = oIpt.value;
+			var x;
+
+			for (var i = 0; i < length; i++) {
+				if (i < length / 2) {
+					x = 2 * i + 1;
+				} else {
+					x = (length - i - 1) * 2 + 1
+				}
+				// console.log(x);//要显示*的个数
+				var str = '<p>';
+				for (var j = 0; j < x; j++) {
+					if (j == 0 || j == x - 1) {
+						str += '<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>';
+					} else {
+						str += '<span style="color:#fff;" class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>';
+					}
+				}
+				str += "</p>"
+				oWrap.innerHTML += str;
+			}
+		}
+	</script>
+</body>
 
 </html>
