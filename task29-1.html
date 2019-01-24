@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <title>Document</title>
-  <style>
-    html,body {background:-webkit-linear-gradient(green,blue);height:100%;}
-    .box {width:50px;height:50px;background: #f00; border-radius: 50%; border:5px solid #fff;position:fixed;left:0;top:0}
-  </style>
-</head>
-<body>
-  <div class="box"></div>
-  <script>
-    var oBox = document.querySelector('.box')
-    var maxX = document.documentElement.clientWidth - oBox.offsetWidth,
-        maxY = document.documentElement.clientHeight - oBox.offsetHeight;
 
-    oBox.onmousedown = function(e){
-      var e = e || window.event;
-      var x = e.clientX - oBox.offsetLeft
-      var y = e.clientY - oBox.offsetTop
-      document.onmousemove = function(e){
-        var e = e || window.event;
-        var moveX = e.clientX - x,
-            moveY = e.clientY - y;
-        if (moveX<=0 || moveX>=maxX){
-          moveX = Math.max(0,moveX)
-          moveX = Math.min(moveX,maxX)
-        }
-        if (moveY<=0 || moveY>=maxY){
-          moveY = Math.max(0,moveY)
-          moveY = Math.min(moveY,maxY)
-        }
-        oBox.style.left = moveX + 'px'
-        oBox.style.top = moveY + 'px'
-      }
-      document.onmouseup = function(){
-        document.onmousemove = null
-      }
-    }
-  </script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<title>Document</title>
+	<style>
+		html,
+		body {
+			background: -webkit-linear-gradient(green, blue);
+			height: 100%;
+		}
+
+		.box {
+			width: 50px;
+			height: 50px;
+			background: #f00;
+			border-radius: 50%;
+			border: 5px solid #fff;
+			position: fixed;
+			left: 0;
+			top: 0
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box"></div>
+	<script>
+		var oBox = document.querySelector('.box')
+		var maxX = document.documentElement.clientWidth - oBox.offsetWidth,
+			maxY = document.documentElement.clientHeight - oBox.offsetHeight;
+
+		oBox.onmousedown = function (e) {
+			var e = e || window.event;
+			var x = e.clientX - oBox.offsetLeft
+			var y = e.clientY - oBox.offsetTop
+			document.onmousemove = function (e) {
+				var e = e || window.event;
+				var moveX = e.clientX - x,
+					moveY = e.clientY - y;
+				if (moveX <= 0 || moveX >= maxX) {
+					moveX = Math.max(0, moveX)
+					moveX = Math.min(moveX, maxX)
+				}
+				if (moveY <= 0 || moveY >= maxY) {
+					moveY = Math.max(0, moveY)
+					moveY = Math.min(moveY, maxY)
+				}
+				oBox.style.left = moveX + 'px'
+				oBox.style.top = moveY + 'px'
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null
+			}
+		}
+	</script>
 </body>
+
 </html>

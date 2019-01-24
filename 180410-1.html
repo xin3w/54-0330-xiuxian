@@ -1,178 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Document</title>
-		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-		<style>
-			.double-tab {
-				width: 840px;
-				margin: 0 auto;
-			}
-			
-			.double-tab .double-tab-label {
-				width: 120px;
-				float: left;
-			}
-			
-			.double-tab .double-tab-label li {
-				list-style: none;
-				background: #eee;
-				color: #333;
-				text-align: center;
-				margin-bottom: 1px;
-				width: 100%;
-				height: 30px;
-				line-height: 30px;
-				cursor: pointer;
-			}
-			
-			.double-tab .double-tab-label li.active {
-				background: #f00;
-				color: #fff;
-			}
-			
-			.double-tab .double-tab-con {
-				width: 720px;
-				float: left;
-				position: relative;
-			}
-			
-			.double-tab .double-tab-con .pages {
-				position: absolute;
-				left: 0;
-				bottom: 0;
-				right: 0;
-			}
-			
-			.double-tab .double-tab-con .pages i {
-				font-style: normal;
-				display: block;
-				float: left;
-				margin-right: 10px;
-				background: #eee;
-				width: 30px;
-				height: 30px;
-				line-height: 30px;
-				text-align: center;
-				color: #333;
-				cursor: pointer;
-			}
-			
-			.double-tab .double-tab-con .pages i.active {
-				background: #f00;
-				color: #fff;
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="./asset/css/style.css">
+</head>
 
-	<body>
-		<div class="container">
-			<h1>双层选项卡</h1>
-			<hr>
-			<div class="double-tab clearfix">
-				<ul class="double-tab-label">
-					<!--<li>1</li>
-					<li>1</li>
-					<li>1</li>-->
-				</ul>
-				<div class="double-tab-con">
-					<!--<img src="https://placem.at/people?w=720&h=480&random=1" />
-					<div class="pages"><i>1</i><i>1</i></div>-->
-					<img src="" />
-					<div class="pages"></div>
-				</div>
-			</div>
+<body>
+	<div id="demo2" flex="main:justify">
+		<ul class=""></ul>
+		<div class="r">
+			<img src="">
+			<p flex></p>
 		</div>
-		<script>
-			var data = [{
-				labelName: "栏目一",
-				imgs: ["https://placem.at/people?w=720&h=480&random=1", "https://placem.at/people?w=720&h=480&random=2", "https://placem.at/people?w=720&h=480&random=3"]
-			}, {
-				labelName: "栏目二",
-				imgs: ["https://placem.at/places?w=720&h=480&random=4", "https://placem.at/places?w=720&h=480&random=5"]
-			}, {
-				labelName: "栏目三",
-				imgs: ["https://placem.at/things?w=720&h=480&random=60", "https://placem.at/things?w=720&h=480&random=70", "https://placem.at/things?w=720&h=480&random=80", "https://placem.at/things?w=720&h=480&random=90"]
-			}];
+	</div>
+	<script>
+		// 定义数据源
+		var obj = [
+			{ name: '大类一', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=0&t=0','https://tuimeizi.cn/random?w=700&h=400&o=1&t=1', 'https://tuimeizi.cn/random?w=700&h=400&o=2&t=2', 'https://tuimeizi.cn/random?w=700&h=400&o=3&t=3'] },
+			{ name: '大类二', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=4&t=4', 'https://tuimeizi.cn/random?w=700&h=400&o=5&t=5', 'https://tuimeizi.cn/random?w=700&h=400&o=6&t=6'] },
+			{ name: '大类三', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=7&t=7', 'https://tuimeizi.cn/random?w=700&h=400&o=8&t=8', 'https://tuimeizi.cn/random?w=700&h=400&o=9&t=9'] }
+		]
 
-			var len = data.length;
+		// 定义变量
+		var ul = document.querySelector('ul'),
+			img = document.querySelector('img'),
+			p = document.querySelector('p'),
+			li = ul.getElementsByTagName('li'),
+			span = p.getElementsByTagName('span');
 
-			var oLab = document.querySelector('.double-tab-label');
-			var oCon = document.querySelector(".double-tab-con");
-			var oConImg = oCon.querySelector('img');
-			var oPages = oCon.querySelector('.pages');
+		var catId = 0, subId = 0, catLen = obj.length, subLen = obj[catId].imgs.length;
 
-
-
-			var strLi = ""
-			for(var i = 0; i < len; i++) {
-				strLi += "<li>" + data[i].labelName + "</li>";
+		// 生成大类结构
+		var catStr = ''
+		for (var i = 0; i < catLen; i++) {
+			if (i == 0) {
+				catStr += '<li class="active">' + obj[i].name + '</li>'
+			} else {
+				catStr += '<li>' + obj[i].name + '</li>'
 			}
-			oLab.innerHTML = strLi;
-			oConImg.src = data[0].imgs[0];
-			var imgLen = data[0].imgs.length;
-			var strI = ''
-			for(var j = 0; j < imgLen; j++) {
-				strI += "<i>" + (j + 1) + "</i>";
+		}
+		ul.innerHTML = catStr
+
+		// 生成小类结构
+		var subStr = ''
+		for (var i = 0; i < subLen; i++) {
+			if (i == 0) {
+				subStr += '<span class="active">' + (i + 1) + '</span>'
+			} else {
+				subStr += '<span>' + (i + 1) + '</span>'
 			}
-			oPages.innerHTML = strI;
-			var oPagesI = oPages.querySelectorAll('i');
-			oPagesI[0].className = 'active';
-			
-			
-			
+		}
+		p.innerHTML = subStr
 
-			var aLabLi = oLab.querySelectorAll('li');
+		// 初始默认图像
+		setImg(catId, subId)
 
-			var activeIdx = 0;
+		// 初始小类点击
+		for (var i = 0; i < subLen; i++) {
+			span[i].subId = i;
+			span[i].onclick = function () {
+				span[subId].className = ''
+				subId = this.subId
+				setImg(catId, subId)
+				span[subId].className = 'active'
+			}
+		}
 
-			var idxL, idxR;
+		// 大类点击
+		for (var i = 0; i < catLen; i++) {
+			li[i].catId = i
+			li[i].onclick = function () {
+				subId = 0
+				li[catId].className = ''
+				catId = this.catId
+				li[catId].className = 'active'
+				setImg(catId, subId)
 
-			aLabLi[0].className = 'active';
-			for(var i = 0; i < len; i++) {
-				aLabLi[i].idx = i;
-				aLabLi[i].onclick = function() {
-					console.log(this.idx)
-					idxL = this.idx;
-
-					aLabLi[activeIdx].className = '';
-					this.className = 'active'
-					activeIdx = this.idx;
-
-					oConImg.src = data[this.idx].imgs[0]; //初始对象*********
-					var imgLen = data[this.idx].imgs.length;
-					var strI = ''
-					for(var j = 0; j < imgLen; j++) {
-						strI += "<i>" + (j + 1) + "</i>";
+				var subStr = ''
+				for (j = 0; j < obj[catId].imgs.length; j++) {
+					if (j == 0) {
+						subStr += '<span class="active">' + (j + 1) + '</span>'
+					} else {
+						subStr += '<span>' + (j + 1) + '</span>'
 					}
-					oPages.innerHTML = strI;
-					var oPagesI = oPages.querySelectorAll('i');
-					oPagesI[0].className = 'active';
-
-					var activeIdx2 = 0;
-					for(var j = 0; j < imgLen; j++) {
-						oPagesI[j].idx = j;
-						oPagesI[j].onclick = function() {
-							//console.log(this.idx)
-							idxR = this.idx
-							this.className = 'active'
-							oPagesI[activeIdx2].className = '';
-							activeIdx2 = this.idx;
-							oConImg.src = data[idxL].imgs[idxR];
-						}
-					}
-
 				}
-			}
+				p.innerHTML = subStr
 
-			function init() {
+				// 小类点击
+				for (j = 0; j < obj[catId].imgs.length; j++) {
+					span[j].subId = j;
+					span[j].onclick = function () {
+						span[subId].className = ''
+						subId = this.subId
+						setImg(catId, subId)
+						span[subId].className = 'active'
+					}
+				}
 
 			}
-		</script>
-	</body>
+		}
+
+		// 设置图像
+		function setImg(catId, subId) {
+			img.src = obj[catId].imgs[subId]
+		}
+
+
+	</script>
+</body>
 
 </html>
