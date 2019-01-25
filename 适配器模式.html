@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+
+<body>
+  <script>
+    new Promise((res, rej) => {
+      $.ajax({
+        type: "method",
+        url: "url",
+        data: "data",
+        dataType: "json",
+        success: function (response) {
+          //由于上面接口的原因，修改了数据结构，此处添加适配器，减少后面代码的逻辑，为适配器模式
+          res(response)
+        },
+        error: function (msg) {
+          rej(msg)
+        }
+      });
+    }).then(msg => {
+      // 处理业务逻辑
+    })
+
+  </script>
+</body>
+
+</html>
