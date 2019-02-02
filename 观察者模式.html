@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let observer = (function () {
+      return class {
+        constructor() {
+          this.children = {}
+        }
+        on(id, cb) {
+          if (!this.children[id]) this.children[id] = []
+          this.children[id].push(cb)
+
+        }
+        emit(id) {
+          if (this.children[id]) {
+            this.children[id].forEach(element => {
+              element()
+            });
+          } else {
+            throw new Error('你没有订阅这个主播!')
+          }
+        }
+      }
+    })()
+
+    let obs = new observer();
+    obs.on('zhanghui', function () {
+      console.log('zhanghui1')
+    })
+    obs.on('zhanghui', function () {
+      console.log('zhanghui2')
+    })
+
+    obs.on('zuoyutao', function () {
+      console.log(456)
+    })
+    document.onclick = function () {
+      obs.emit("zhanghui")
+    }
+  </script>
+</body>
+
+</html>

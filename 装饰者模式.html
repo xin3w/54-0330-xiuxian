@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+
+<body>
+  <script>
+    class Teacher {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      a() { }
+      b() { }
+    }
+    let a = new Teacher('张辉', 18)
+    let b = new Teacher('左玉涛', 20)
+    let c = new Teacher('张梓岩', 8)
+    let d = new Teacher('左霖妍', 1)
+
+    function zhuangshizhe(sex) {
+      this.sex = sex
+      return this
+    }
+    
+    b = zhuangshizhe.call(b,'女')
+    
+
+  </script>
+</body>
+
+</html>

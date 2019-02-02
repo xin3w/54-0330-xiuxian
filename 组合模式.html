@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class info {
+      constructor(name, price, spicy) {
+        this.name = name
+        this.price = price
+        this.spicy = spicy
+      }
+      print() {
+        console.log(`你的菜${this.name},价格：${this.price},口味:${this.spicy}`)
+      }
+    }
+    class category {
+      constructor(name) {
+        this.name = name
+        this.children = []
+      }
+      add(item) {
+        this.children.push(item)
+        return this
+      }
+      print() {
+        console.log(`${this.name}:`)
+        this.children.forEach(v => {
+          v.print()
+        })
+      }
+    }
+    class main {
+      constructor(id) {
+        this.id = id
+        this.children = []
+      }
+      add(item) {
+        this.children.push(item)
+        return this
+      }
+      print() {
+        console.log(`第${this.id}桌客人菜单:`)
+        this.children.forEach(v => {
+          v.print()
+        })
+      }
+    }
+
+    let menu = new main(68)
+      .add(
+        new category('主菜')
+          .add(new info('宫保鸡丁1', 20, '麻辣'))
+          .add(new info('宫保鸡丁2', 20, '麻辣'))
+      )
+      .add(
+        new category('饮料')
+          .add(new info('饮料1', 20, '麻辣'))
+          .add(new info('饮料2', 20, '麻辣'))
+      )
+      menu.print()
+  </script>
+</body>
+
+</html>

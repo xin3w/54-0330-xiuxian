@@ -13,6 +13,38 @@
 
 </body>
 <script>
- 
+  let proxy = (function () {
+    const yiyi = {
+      name: '张梓岩',
+      sex: '男',
+      age: 8
+    }
+    return function (info) {
+      let handle = {
+        get(sourceObj,key){
+          if(key === 'age'){
+            if(info && info.id == 20){
+              return Reflect.get(sourceObj,key)
+            }else{
+              throw new Error ('你不是20的id所以不给你看呀！')
+            }
+          }else{
+            return Reflect.get(sourceObj,key)
+          }
+          
+          return Reflect.get(sourceObj,key)
+        },
+        set(sourceObj,key,value) { }
+      }
+      return new Proxy(yiyi, handle)
+    }
+  })()
+
+  let vist = proxy({id:20})
+  console.log(vist.name);
+  console.log(vist.age);
+  
+
 </script>
+
 </html>
