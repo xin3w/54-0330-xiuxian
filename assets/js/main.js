@@ -1,5 +1,5 @@
 // 定义全局
-var pages = [], titles = []
+var pages = ['index.html'], titles = ['目录页']
 
 jQuery.hrefReplace = function () {
   $.each($("a"), function (index, value) {

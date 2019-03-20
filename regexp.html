@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <pre class="alert alert-danger">
+      \w 匹配字符 （字母，数字,_）
+      \W 匹配非字符
+      \d 匹配数字
+      \D 匹配非数字
+      \s 匹配空格
+      \S 匹配非空格
+      \b 匹配单词边界 /\byou\b/
+      \B 匹配非单词边界</pre>
+    <h2>量词</h2>
+    <pre class="alert alert-danger">
+      /\d{20}/ 匹配20个连续的数字
+      /\d{4,20}/ 匹配最少4个，最多20个连续的数字，优先匹配最多的，没有最多的会依次降低位数进行匹配
+      /\d{4,}/ 匹配最少4个，最多不限的连续数字
+      + {1,} 最少匹配1个
+      ? {0，1} 要未不匹配，要未匹配一个
+      * {0,} 有就匹配，没有就不匹配
+      {4,20} 贪婪匹配 见16行
+      {4,20}? 懒惰匹配 多加个?号 即能匹配4个就不匹配20个</pre>
+    <h2>修饰符</h2>
+    <pre class="alert alert-danger">
+      g 全局匹配
+      i 不区分大小写
+      m 换行匹配
+      /\d+/g === new RegExp("\\d+","g") 这两个是相等的写法 注意体会</pre>
+    <h2>组 （）</h2>
+    <h2>字符集</h2>
+    <pre class="alert alert-danger">
+      [abc] 匹配一个字符a或b或c 详见60-62L  大部分有特殊意义的字符中字符集中是没有意义了，除了转义字符详见69-72L
+      | 或者前后各一组
+      ^ 除了谁 [^abc] 除了a或b或c
+      - 区间 两个字符的unicode码之前的都包括</pre>
+    <h2>起始符</h2>
+    <pre class="alert alert-danger">
+      ^ 起始位置
+      $ 终止位置s</pre>
+    <h2>方法</h2>
+    <pre class="alert alert-success">
+      正则.test(字符串)
+      字符串.match(正则)  没有全局g修饰的时候，数组里面第二位是组匹配的内容依次类推 见46-49Line
+      字符串.replace(正则,目标值) 这个目标值可以是一个function return什么就替换成什么(这个函数有隐型的参数)</pre>
+
+    <h2>实例</h2>
+    <pre class="alert alert-success">
+      var str = 'abababc'
+      var reg= /(ab)+(c)/
+      var reg= /(ab)+(c)/g
+      console.log(str.match(reg)) // ["abababc", "ab", "c"]
+      
+      var str = "abc张"
+      var reg = /a(w|b|c|d)+/g
+      console.log(str.match(reg))
+      
+      var str = "abc"
+      var reg = /[abc]/g
+      console.log(str.match(reg))
+      
+      var str ="zhanghui"
+      var re = /[zg]/g
+      console.log(str.match(re))
+      
+      var str = "{5}"
+      // var re = /\{5\}/
+      var re = /[{5}]+/
+      console.log(str.match(re))
+      
+      var ipt = document.getElementById('qq')
+      var btn = document.querySelector('button')
+      btn.onclick=function(){
+        var val = ipt.value
+        var reg = /^[1-9]\d{3,7}$/g
+        console.log(reg.test(val))
+      }
+      
+      var str = 'abcabcc'
+      var reg = /(ab)(c)\2/; // 捕获组即第二个括号双c
+      console.log(str.match(reg))
+      
+      var str = "abcjkjkabcjkk";
+      var reg = /(ab)(c)(j(k))\4/; // 双K捕获，注意()的顺序
+      console.log(str.match(reg))
+      
+      var str = "a1b2"
+      var reg = /(a-z\d)\1/ // a1b2无法捕获到a1a1才可
+      console.log(str.match(reg)
+      
+      var str = "a454d6dga4"
+      var reg = /(a4)(?:54).*(ga)\2/ //?:表示不占用捕获组的位置 跳过当前捕获组
+      console.log(str.match(reg))
+      
+      var str = "Windows10"
+      var reg = /Windows(?=10)/ // 后面必须是10才能匹配成功的Windows
+      var reg = /Windows(?!98)/ // 只要不是98就能匹配Windows 
+      console.log(str.match(reg))</pre>
+
+
+  </div>
+  <script>
+    var reg = {
+      qq: /^[1-9]\d{4,9}$/, // 5-10位纯数字
+      mobile: /^1[3-9]\d{9}$/, // 11位，第一位为1，第二位3-9
+      user: /^[a-z_]\w{5,15}$/i, // 6-16位以数字，字母下划线，且不能以数字开头
+      pwd: /^[\w~`!@#$%^&*()\-=+{}[\]|\\<>?,\./:']{6,18}$/, // 6-18位 （此处检测时不允许中文符号出现）在这里需要转义的有.\-]
+      // idCard:/
+      // ^
+      // [1-9]\d{5}(18|19|20)\d{2} // 年以前
+      // (02                       // 02月
+      //  (0[1-9]|[12][0-9])       // 01-29
+      //  |
+      //  (0[1,3-9]|1[0-2])        // 其它月
+      //  (0[1-9]|[12][0-9]|3[01]) // 其它日
+      // )
+      // \d{3}[\dx]
+      // $/i
+      idCard: /^[1-9]\d{5}(18|19|20)\d{2}(02(0[1-9]|[12][0-9])|(0[1,3-9]|1[0-2])(0[1-9]|[12][0-9]|3[01]))\d{3}[\dx]$/i,
+      emial: /^[1-9a-z_]\w*@[0-9a-z]{2,}\.[a-z]{2,6}(\.net)?$/i
+    }
+    var str = "110221198207295614"
+    console.log(reg.idCard.test(str))
+  </script>
+</body>
+
+</html>

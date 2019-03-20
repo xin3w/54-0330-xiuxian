@@ -708,3 +708,11 @@ body {
   left: 0;
   top: 0;
 }
+#tween #box {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  background: -webkit-linear-gradient(red, blue);
+}

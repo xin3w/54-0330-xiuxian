@@ -123,6 +123,18 @@
         {
           "title": "小球拖动",
           "url": "dragBall.html"
+        },
+        {
+          "title": "tween版运动框架",
+          "url": "tween.html"
+        },
+        {
+          "title": "正则",
+          "url": "regexp.html"
+        },
+        {
+          "title": "浏览器版本判断",
+          "url": "browser.html"
         }
       ]
     }
