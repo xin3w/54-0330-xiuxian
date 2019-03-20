@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <style>
+    html,
+    body {
+      background: -webkit-linear-gradient(green, blue);
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body id="single-ball">
+  <div class="box"></div>
+  <script>
+    var oBox = document.querySelector('.box')
+    var maxX = document.documentElement.clientWidth - oBox.offsetWidth,
+      maxY = document.documentElement.clientHeight - oBox.offsetHeight;
+
+    oBox.onmousedown = function (e) {
+      var e = e || window.event;
+      var x = e.clientX - oBox.offsetLeft
+      var y = e.clientY - oBox.offsetTop
+      document.onmousemove = function (e) {
+        var e = e || window.event;
+        var moveX = e.clientX - x,
+          moveY = e.clientY - y;
+        if (moveX <= 0 || moveX >= maxX) {
+          moveX = Math.max(0, moveX)
+          moveX = Math.min(moveX, maxX)
+        }
+        if (moveY <= 0 || moveY >= maxY) {
+          moveY = Math.max(0, moveY)
+          moveY = Math.min(moveY, maxY)
+        }
+        oBox.style.left = moveX + 'px'
+        oBox.style.top = moveY + 'px'
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null
+      }
+    }
+  </script>
+</body>
+
+</html>

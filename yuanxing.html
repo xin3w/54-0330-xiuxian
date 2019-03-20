@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型继承模式</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <script>
+    // es5的原型继承开始
+    function source() {
+      this.name = 'zhang'
+    }
+    source.prototype.a = function (param) { }
+    function target() {
+      source.call(this)
+    }
+    function middle() { }
+    middle.prototype = source.prototype
+    target.prototype = new middle()
+    target.prototype.constructor = target
+    console.log(new target());
+    // es5原型继承结束
+
+    // es6原型继承开始
+    class source1 {
+      constructor() { }
+      x() { }
+    }
+
+    class target1 extends source1 {
+      constructor() {
+        super()
+      }
+    }
+    console.log(new target1())
+    // es6原型继承结束
+
+  </script>
+</body>
+
+</html>

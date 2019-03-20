@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>策略模式</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <div class="alert alert-success">
+      运动框架tween.js就是一个策略模式的应用;下面这个是根据充值的金额多少来判断当前用户享受的等级折扣，根据不同的折扣来享受不用的价格；
+    </div>
+
+    <button type="button" class="btn btn-primary" data-money=100>先充100</button>
+    <button type="button" class="btn btn-warning" data-money=200>在充200</button>
+    <button type="button" class="btn btn-success" data-money=300>在充300</button>
+    <button type="button" class="btn btn-info" data-money=400>在充400</button>
+    <div class="alert alert-info">
+    </div>
+
+  </div>
+
+
+  <script>
+    let Player = (function () {
+      // 策略类
+      let strategy = function (level, price) {
+        let S = {
+          "S": function () {
+            return price * 0.7
+          },
+          "A": function () {
+            return price * 0.8
+          },
+          "B": function () {
+            return price * 0.9
+          },
+          "C": function () {
+            return price
+          }
+        }
+        return S[level] && S[level]()
+      }
+      // 选手类
+      return class {
+        constructor(name) {
+          this.name = name;
+          this.level = "C";
+          this.total = 0
+        }
+        sum() {
+          return this.total
+        }
+        consume(price) {
+          this.total += price
+          this.getLevel(this.total)
+          return strategy(this.level, price)
+        }
+        getLevel() {
+          if (this.total >= 1000) {
+            this.level = "S"
+          } else if (this.total >= 800) {
+            this.level = "A"
+          } else if (this.total >= 500) {
+            this.level = "B"
+          } else {
+            this.level = "C"
+          }
+          return this.level
+        }
+      }
+    })()
+
+    let player1 = new Player('zhanghui')
+    let obtn = document.querySelectorAll('button');
+    let oAlertInfo = document.querySelector('.alert-info');
+
+    for (var i = 0; i < obtn.length; i++) {
+      obtn[i].onclick = function () {
+        let money = parseInt(this.getAttribute("data-money"))
+        oAlertInfo.innerHTML = '充值金额：' + player1.consume(money) + "<br />当前用户等级：" + player1.getLevel() + "</br>总消费金额：" + player1.sum()
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

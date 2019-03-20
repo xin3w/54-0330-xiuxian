@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="qq">
+  <div class="container">
+    <h1>折叠菜单</h1>
+    <hr>
+    <div class="colapse-menu">
+      <h2 class="active">大类一</h2>
+      <ul class="active">
+        <li>内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+      </ul>
+      <h2>大类二</h2>
+      <ul>
+        <li>内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+      </ul>
+      <h2>大类三</h2>
+      <ul>
+        <li>内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var aH2 = document.querySelectorAll('.colapse-menu h2');
+    var aUl = document.querySelectorAll('.colapse-menu ul');
+    var length = aH2.length;
+    for (var i = 0; i < length; i++) {
+      aH2[i].index = i;
+      aH2[i].onclick = function () {
+        if (this.className == 'active') {
+          this.className = ''
+          aUl[this.index].className = '';
+        } else {
+          this.className = 'active';
+          aUl[this.index].className = 'active';
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

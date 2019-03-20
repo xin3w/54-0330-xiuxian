@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单例模式</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="demo4">
+  <script>
+    let f = (function () {
+      let ins = null
+      let timer = null
+      return class {
+        constructor(name) {
+          if (!ins) {
+            ins = this
+          } else {
+            ins.ele.innerHTML = name
+            ins.show()
+            return ins
+          }
+          this.ele = document.createElement('div')
+          this.ele.className = "model animated"
+          this.ele.innerHTML = name
+        }
+        show() {
+          document.body.appendChild(this.ele)
+          this.ele.classList.remove('bounceOutRight')
+          this.ele.classList.add('bounceInLeft')
+
+          clearTimeout(timer)
+          timer = setTimeout(() => {
+            this.ele.classList.remove('bounceInLeft')
+            this.ele.classList.add('bounceOutRight')
+          }, 3000);
+        }
+      }
+    })()
+
+    new f('zhanghui').show()
+    document.onclick = function (param) {
+      let random = Math.random()
+      new f(random).show()
+    }
+  </script>
+</body>
+
+</html>

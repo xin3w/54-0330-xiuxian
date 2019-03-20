@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container"></div>
+  <script>
+    // var arr = [1, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3]
+    // function arrNoRepeat(arr) {
+    //   for (var i = 0; i < arr.length - 1; i++) {
+    //     for (var j = i + 1; j < arr.length; j++) {
+    //       if (arr[i] == arr[j]) {
+    //         arr.splice(j, 1);
+    //         j--;
+
+    //       }
+    //     }
+    //   }
+    //   return arr
+    // }
+
+    // var myarr = arrNoRepeat(arr)
+    // console.log('​myarr', myarr)
+
+    var arr = [1, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3]
+    for (var i = 0; i < arr.length - 1; i++) {
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+          arr.splice(j, 1);
+          j--;
+        }
+      }
+    }
+    console.log(arr);
+
+
+  </script>
+</body>
+
+</html>

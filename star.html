@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="demo3">
+  <div class="container">
+    <ul flex='main:center'>
+      <li class="">★</li>
+      <li>★</li>
+      <li>★</li>
+      <li>★</li>
+      <li>★</li>
+    </ul>
+    <div id="tips">请选择星级</div>
+  </div>
+  <script>
+    var ul = document.querySelector('#demo3 ul');
+    var li = document.querySelectorAll('li');
+    var liLen = li.length;
+    var tips = document.getElementById('tips');
+    var arrTxt = ['请选择星级', '1星', '2星', '3星', '4星', '5星'];
+    var hasClick = false;
+    var idx = 1;
+
+    for (var i = 0; i < liLen; i++) {
+      li[i].idx = i + 1;
+      li[i].onmouseover = function () {
+        console.log('​li[i].onmouseover -> this.idx', this.idx) // 从1开始
+        tips.innerHTML = arrTxt[this.idx]
+        for (var j = 0; j < this.idx; j++) {
+          li[j].className = 'on'
+        }
+        for (var j = this.idx; j < liLen; j++) {
+          li[j].className = ''
+        }
+      }
+      li[i].onmouseout = function () {
+        if (!hasClick) {
+          for (var j = 0; j < liLen; j++) {
+            li[j].className = ''
+            tips.innerHTML = arrTxt[0]
+          }
+        } else {
+          for (var j = 0; j < idx; j++) {
+            li[j].className = 'on'
+          }
+          for (var j = idx; j < liLen; j++) {
+            li[j].className = ''
+          }
+          tips.innerHTML = arrTxt[idx]
+        }
+      }
+      li[i].onclick = function () {
+        hasClick = true
+        idx = this.idx
+      }
+    }
+  </script>
+</body>
+
+</html>

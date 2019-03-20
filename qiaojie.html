@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>目录</title>
+  <title>桥接模式</title>
   <link rel="shortcut icon" href="assets/img/favicon.ico" />
   <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
@@ -14,11 +14,27 @@
   <script src="assets/js/main.js"></script>
 </head>
 
-<body id="index">
-  <div class="container">
-    <h2>https://xin3w.github.io/54-0330-xiuxian/index.html</h2>
-    <hr>
-  </div>
+<body id="">
+  <script>
+
+    // let t = (function () {
+    //   return function () {
+    //     let a = 1
+    //     return function () {
+    //       let b = 2
+    //       return a + b
+    //     }
+    //   }
+    // })()
+    // let res = t()()
+    // console.log('TCL: res', res)
+
+    // 所谓的桥接模式就是当两个事件需要请求同一个接口数据时，由于前面的url是一致的，后面的参数是不一样的，所以可以建立一个桥，让他可以通用
+    // 例如
+    function bridge(params) {
+      ajax('get', 'http://url' + params, function () { })
+    }
+  </script>
 </body>
 
 </html>

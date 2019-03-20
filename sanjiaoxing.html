@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="lingxing">
+  <div class="container">
+    <div class="input-group">
+      <input type="number" name="" id="input" class="form-control" value="" min="5" max="20" step="" required="required"
+        title="" placeholder="请输入显示的行数最小5，最大20">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" id="btn">生成倒三角</button>
+      </span>
+    </div>
+    <div id="wrap" style="text-align: center;"></div>
+  </div>
+  <script>
+    var oWrap = document.getElementById('wrap')
+    var oIpt = document.getElementById('input');
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function () {
+      oWrap.innerHTML = ''
+      var value = oIpt.value;
+      for (var i = 0; i < value; i++) {
+        var x = 2 * i + 1;
+        var str = "<p>"
+        for (var j = 0; j < x; j++) {
+          str += "<i class='glyphicon glyphicon-heart-empty'></i>"
+        }
+        str += "</p>"
+        oWrap.innerHTML += str
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div id="demo2" flex="main:justify">
+    <ul class=""></ul>
+    <div class="r">
+      <img src="">
+      <p flex></p>
+    </div>
+  </div>
+  <script>
+    // 定义数据源
+    var obj = [
+      { name: '大类一', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=0&t=0', 'https://tuimeizi.cn/random?w=700&h=400&o=1&t=1', 'https://tuimeizi.cn/random?w=700&h=400&o=2&t=2', 'https://tuimeizi.cn/random?w=700&h=400&o=3&t=3'] },
+      { name: '大类二', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=4&t=4', 'https://tuimeizi.cn/random?w=700&h=400&o=5&t=5', 'https://tuimeizi.cn/random?w=700&h=400&o=6&t=6'] },
+      { name: '大类三', imgs: ['https://tuimeizi.cn/random?w=700&h=400&o=7&t=7', 'https://tuimeizi.cn/random?w=700&h=400&o=8&t=8', 'https://tuimeizi.cn/random?w=700&h=400&o=9&t=9'] }
+    ]
+
+    // 定义变量
+    var ul = document.querySelector('ul'),
+      img = document.querySelector('img'),
+      p = document.querySelector('p'),
+      li = ul.getElementsByTagName('li'),
+      span = p.getElementsByTagName('span');
+
+    var catId = 0, subId = 0, catLen = obj.length, subLen = obj[catId].imgs.length;
+
+    // 生成大类结构
+    var catStr = ''
+    for (var i = 0; i < catLen; i++) {
+      if (i == 0) {
+        catStr += '<li class="active">' + obj[i].name + '</li>'
+      } else {
+        catStr += '<li>' + obj[i].name + '</li>'
+      }
+    }
+    ul.innerHTML = catStr
+
+    // 生成小类结构
+    var subStr = ''
+    for (var i = 0; i < subLen; i++) {
+      if (i == 0) {
+        subStr += '<span class="active">' + (i + 1) + '</span>'
+      } else {
+        subStr += '<span>' + (i + 1) + '</span>'
+      }
+    }
+    p.innerHTML = subStr
+
+    // 初始默认图像
+    setImg(catId, subId)
+
+    // 初始小类点击
+    for (var i = 0; i < subLen; i++) {
+      span[i].subId = i;
+      span[i].onclick = function () {
+        span[subId].className = ''
+        subId = this.subId
+        setImg(catId, subId)
+        span[subId].className = 'active'
+      }
+    }
+
+    // 大类点击
+    for (var i = 0; i < catLen; i++) {
+      li[i].catId = i
+      li[i].onclick = function () {
+        subId = 0
+        li[catId].className = ''
+        catId = this.catId
+        li[catId].className = 'active'
+        setImg(catId, subId)
+
+        var subStr = ''
+        for (j = 0; j < obj[catId].imgs.length; j++) {
+          if (j == 0) {
+            subStr += '<span class="active">' + (j + 1) + '</span>'
+          } else {
+            subStr += '<span>' + (j + 1) + '</span>'
+          }
+        }
+        p.innerHTML = subStr
+
+        // 小类点击
+        for (j = 0; j < obj[catId].imgs.length; j++) {
+          span[j].subId = j;
+          span[j].onclick = function () {
+            span[subId].className = ''
+            subId = this.subId
+            setImg(catId, subId)
+            span[subId].className = 'active'
+          }
+        }
+
+      }
+    }
+
+    // 设置图像
+    function setImg(catId, subId) {
+      img.src = obj[catId].imgs[subId]
+    }
+
+
+  </script>
+</body>
+
+</html>

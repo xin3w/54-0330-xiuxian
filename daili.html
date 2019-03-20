@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>代理模式</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <script>
+    let proxy = (function () {
+      const yiyi = {
+        name: '张梓岩',
+        sex: '男',
+        age: 8
+      }
+      return function (info) {
+        let handle = {
+          get(sourceObj, key) {
+            if (key === 'age') {
+              if (info && info.id == 20) {
+                return Reflect.get(sourceObj, key)
+              } else {
+                throw new Error('你不是20的id所以不给你看呀！')
+              }
+            } else {
+              return Reflect.get(sourceObj, key)
+            }
+
+            return Reflect.get(sourceObj, key)
+          },
+          set(sourceObj, key, value) { }
+        }
+        return new Proxy(yiyi, handle)
+      }
+    })()
+
+    let vist = proxy({ id: 20 })
+    console.log(vist.name);
+    console.log(vist.age);
+
+
+  </script>
+</body>
+
+</html>

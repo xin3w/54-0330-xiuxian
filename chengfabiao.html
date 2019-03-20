@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="chengfabiao">
+  <div class="container">
+    <h1>本页请在pc端大屏查看效果</h1>
+    <hr>
+    <h1>第一种</h1>
+    <div id="one"></div>
+    <hr />
+    <h1>第二种</h1>
+    <div id="two"></div>
+    <hr />
+    <h1>第三种</h1>
+    <div id="three"></div>
+    <hr />
+    <h1>第四种</h1>
+    <div id="four"></div>
+    <hr />
+  </div>
+  <script>
+    //实现99乘法表
+    //第一种
+    var one = document.getElementById('one')
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 1; j <= i; j++) {
+        one.innerHTML += '<button type="button" class="btn btn-primary">' + i + '*' + j + '=' + i * j + '</button>'
+      }
+      one.innerHTML += "<br />"
+
+    }
+
+    //第二种
+    var two = document.getElementById('two')
+    for (var i = 1; i <= 9; i++) {
+      for (var j = i; j <= 9; j++) {
+        two.innerHTML += '<button type="button" class="btn btn-warning">' + i + '*' + j + '=' + i * j + '</button>'
+      }
+      two.innerHTML += "<br />"
+
+    }
+
+    //第三种
+    var three = document.getElementById('three')
+    for (var i = 9; i >= 1; i--) {
+      for (var j = 1; j <= i; j++) {
+        three.innerHTML += '<button type="button" class="btn btn-success">' + i + '*' + j + '=' + i * j + '</button>'
+      }
+      three.innerHTML += "<br />"
+
+    }
+
+    //第三种
+    var four = document.getElementById('four')
+    for (var i = 9; i >= 1; i--) {
+      for (var j = i; j <= 9; j++) {
+        four.innerHTML += '<button type="button" class="btn btn-danger">' + i + '*' + j + '=' + i * j + '</button>'
+      }
+      four.innerHTML += "<br />"
+
+    }
+  </script>
+</body>
+
+</html>

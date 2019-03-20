@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="lunbotu">
+  <div class="container">
+    <div id="slider" class="center-block">
+      <div id="top"></div>
+      <div id="slider-imgs">
+        <img src="https://placem.at/people?w=400&h=400&random=1" alt="">
+      </div>
+      <div id="bot"></div>
+      <span id="left" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+      <span id="right" class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+    </div>
+    <hr>
+    <div class="input-group text-center">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default">单边切换</button>
+        <button type="button" class="btn btn-default">循环切换</button>
+      </span>
+    </div>
+  </div>
+  <script>
+    var oTop = document.getElementById('top');
+    var oBot = document.getElementById('bot');
+    var oImg = document.querySelector('#slider-imgs img');
+    var aImgs = ["https://placem.at/people?w=400&h=400&random=1", "https://placem.at/people?w=400&h=400&random=2", "https://placem.at/people?w=400&h=400&random=3", "https://placem.at/people?w=400&h=400&random=4"]
+    var aTxt = ["标题文字一", "标题文字二", "标题文字三", "标题文字四"];
+    var length = aImgs.length;
+
+    var oBtnLeft = document.getElementById('left')
+    var oBtnRight = document.getElementById('right')
+
+    var btnType = document.querySelectorAll('.input-group-btn button');
+    var mode = 0;//0：单边模式；1：循环模式;
+
+    var idx = 0;
+    init();
+
+    oBtnLeft.onclick = function () {
+      //左切换
+      if (mode == 0) {
+        if (idx == 0) {
+          idx = 0;
+        } else {
+          idx--;
+        }
+      }
+      if (mode == 1) {
+        if (idx == 0) {
+          idx = length - 1;
+        } else {
+          idx--;
+        }
+      }
+      init()
+    }
+    oBtnRight.onclick = function () {
+      //右切换
+      if (mode == 0) {
+        if (idx + 1 < length) {
+          idx++;
+        } else {
+          idx = length - 1
+        }
+      }
+      if (mode == 1) {
+        if (idx + 1 < length) {
+          idx++;
+        } else {
+          idx = 0
+        }
+      }
+
+      init()
+    }
+
+    btnType[0].onclick = function () {
+      //单边模式
+      mode = 0
+    }
+    btnType[1].onclick = function () {
+      //循环模式
+      mode = 1
+    }
+
+    function init() {
+      oTop.innerHTML = idx + 1 + "/" + length;
+      oBot.innerHTML = aTxt[idx];
+      oImg.src = aImgs[idx];
+    }
+  </script>
+</body>
+
+</html>

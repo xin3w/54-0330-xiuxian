@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>建造者模式</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <script>
+    let house = (function () {
+      function space(p) {
+        this.room = p > 3 ? p : 2
+      }
+      function type(m) {
+        this.type = m < 50 ? '普通' : '高级'
+      }
+      function style(s) {
+        this.style = s
+      }
+      return class {
+        constructor(p, m, s) {
+          space.call(this, p)
+          type.call(this, m)
+          style.call(this, s)
+        }
+        done() {
+          console.log('​space -> this.room', this.room)
+          console.log('​type -> this.type', this.type)
+          console.log('​style -> this.style', this.style)
+        }
+      }
+    })()
+
+    new house(10, 49, '小清新').done()
+
+  </script>
+</body>
+
+</html>
