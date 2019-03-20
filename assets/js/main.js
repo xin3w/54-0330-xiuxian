@@ -42,7 +42,7 @@ jQuery.goPage = function () {
         }
         break;
       case 38:
-        location.href = "/"
+        location.href = location.href.replace(reg, 'index.html');
     }
   };
 }
