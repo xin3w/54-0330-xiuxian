@@ -716,3 +716,11 @@ body {
   top: 100px;
   background: -webkit-linear-gradient(red, blue);
 }
+#speed-time #box {
+  width: 100px;
+  height: 100px;
+  background: #f00;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
