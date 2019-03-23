@@ -76,11 +76,11 @@ jQuery.init = function () {
           h3 = "<h3>" + data[i].category + "</h3>"
           li = ''
           for (var j = 0; j < data[i].data.length; j++) {
-            li += '<li class="list-group-item"><a href="' + data[i].data[j].url + '">' + data[i].data[j].title + '</a></li>'
+            li += '<a class="list-group-item" href="' + data[i].data[j].url + '">' + data[i].data[j].title + '</a>'
           }
-          ul = '<ul class="list-group">' + li + '</ul>'
-          html = h3 + ul
-          $('#index .container').append(html)
+          ul = '<div class="list-group">' + li + '</div>'
+          html = '<div class="col-md-4">'+h3 + ul+'</div>'
+          $('#index .container .row').append(html)
         }
       }
       // 全局url添加

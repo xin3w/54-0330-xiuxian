@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <h3>核心结构：在闭包中构造函数同级创建一个命令集合的对象，并在类执行函数中依次执行</h3>
+    <button type="button" class="btn btn-warring">第一组命令（1.创建div;2.console.log）</button>
+    <button type="button" class="btn btn-success">第二组命令（1.alert;2.console.log）</button>
+    <button type="button" class="btn btn-primary">第三组命令（改变背景色）</button>
+
+  </div>
+  <script>
+    var cmd = (function () {
+      let cmdList = {
+        command1: function () {
+          var div = document.createElement('div')
+          div.className = 'alert alert-success'
+          div.innerHTML = 'test文本'
+          document.body.appendChild(div)
+        },
+        command2: function (msg) {
+          console.log(msg)
+        },
+        command3: function (msg) {
+          alert(msg)
+        }
+      }
+      return class {
+        constructor() { }
+        exe(data) {
+          this.data = []
+          this.data = [...this.data, ...data]
+          this.data.forEach(v => {
+            // 如果存在则执行cmdList中的操作
+            cmdList[v.command] && cmdList[v.command](v.params)
+          });
+        }
+        add(key, value) {
+          cmdList[key] = value
+        }
+      }
+    })()
+
+    var instance = new cmd()
+    $('.btn').eq(0).on('click', function () {
+      instance.exe([{ command: 'command1', params: '' }, { command: 'command2', params: 'command2' }])
+    })
+    $('.btn').eq(1).on('click', function () {
+      instance.exe([{ command: 'command1', params: '' }, { command: 'command3', params: 'command3' }])
+    })
+    $('.btn').eq(2).on('click', function () {
+      instance.add('command4', function () {
+        document.body.style.background = '#f00'
+      })
+      instance.exe([{ command: 'command4', params: '' }])
+    })
+  </script>
+</body>
+
+</html>

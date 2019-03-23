@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <h3>审批资金实例</h3>
+
+    <div class="alert alert-success">
+      <pre>
+        1.function chain (if ..else if else if else if....)
+        2.function zhice1(){if...else zhice2()}
+          function zhice2(){if...else zhice3()}
+          function zhice3(){if...else zhice4()}
+          function zhice4(){if...}
+</pre>
+    </div>
+
+    <button type="button" class="btn btn-danger" value="1000">申请1000资金</button>
+    <button type="button" class="btn btn-danger" value="2000">申请2000资金</button>
+    <button type="button" class="btn btn-danger" value="3000">申请3000资金</button>
+    <button type="button" class="btn btn-danger" value="4000">申请4000资金</button>
+
+    <div class="alert alert-danger" style="margin-top: 20px;">
+
+    </div>
+
+
+  </div>
+  <script>
+    function step1(m) {
+      if (m <= 1000) {
+        $('.alert-danger').html('一级审批')
+      } else {
+        return 'next'
+      }
+    }
+    function step2(m) {
+      if (m <= 2000) {
+        $('.alert-danger').html('二级审批')
+      } else {
+        return 'next'
+      }
+    }
+    function step3(m) {
+      if (m <= 3000) {
+        $('.alert-danger').html('三级审批')
+      } else {
+        return 'next'
+      }
+    }
+    function step4(m) {
+      if (m <= 4000) {
+        $('.alert-danger').html('四级审批')
+      }
+    }
+
+    let Chain = (function () {
+      return class {
+        constructor(...rest) {
+          this.fns = rest
+        }
+        request(m) {
+          let value = 'next'
+          let i = 0;
+          while (value == 'next') {
+            value = this.fns[i](m)
+            i++
+          }
+        }
+      }
+    })()
+
+    let chain = new Chain(step1, step2, step3, step4)
+    $('button').on('click', function () {
+      var v = $(this).val()
+      chain.request(v)
+    });
+
+
+  </script>
+</body>
+
+</html>

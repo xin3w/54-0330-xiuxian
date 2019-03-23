@@ -62,11 +62,19 @@
         {
           "title": "策略模式",
           "url": "celv.html"
+        },
+        {
+          "title": "命令模式",
+          "url": "cmd.html"
+        },
+        {
+          "title": "职责链模式",
+          "url": "chain.html"
         }
       ]
     },
     {
-      "category": "作业练习",
+      "category": "基础练习",
       "data": [
         {
           "title": "带循环开关的简单焦点切换",
