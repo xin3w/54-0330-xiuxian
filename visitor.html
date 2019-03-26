@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <h2>访问者模式</h2>
+
+    <h4>第一种使用场景(通过call来借用别人的方法来给自己使用)</h4>
+
+    <div class="alert alert-success">
+      <pre>
+          let a = {
+            name: 'zhanghui',
+            addAttr() {
+              this.age = 18;
+              this.sex = "男"
+            }
+          }
+          a.addAttr() // {name: "zhanghui", addAttr: ƒ, age: 18, sex: "男"}
+          let b = { weight: '50kg' }
+          a.addAttr.call(b) //{weight: "50kg", age: 18, sex: "男"}</pre>
+    </div>
+
+    <h4>第二种使用场景(让对象也有push方法)</h4>
+
+    <div class="alert alert-info">
+      <pre>
+        let vistor = {
+          push:function(obj,value){
+            Array.prototype.push.call(obj,value)
+          }
+        }
+        let c ={}
+        vistor.push(c,1000000)
+        console.log(c)</pre>
+    </div>
+
+
+  </div>
+  <script>
+    let a = {
+      name: 'zhanghui',
+      addAttr() {
+        this.age = 18;
+        this.sex = "男"
+      }
+    }
+    a.addAttr()
+    console.log(a) //将addAttr的key value反应到a对象里面.
+    let b = { weight: '50kg' }
+    a.addAttr.call(b)
+    console.log(b)
+    // ===================================
+    let vistor = {
+      push:function(obj,value){
+        Array.prototype.push.call(obj,value)
+      }
+    }
+    let c ={}
+    vistor.push(c,1000000)
+    console.log(c) // {0: 1000000, length: 1}
+
+  </script>
+</body>
+
+</html>

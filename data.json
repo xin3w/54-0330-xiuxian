@@ -70,6 +70,14 @@
         {
           "title": "职责链模式",
           "url": "chain.html"
+        },
+        {
+          "title": "访问者模式",
+          "url": "visitor.html"
+        },
+        {
+          "title": "中介者模式",
+          "url": "middle.html"
         }
       ]
     },

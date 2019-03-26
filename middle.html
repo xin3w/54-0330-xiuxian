@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+
+    <div class="alert alert-success">
+      中介者模式(Mediator)：通连中介者对象封装一系列对象之间的交互,使对象之间不再相互引用,降低他们之间的耦合。
+    </div>
+    <h4>两个人的战斗</h4>
+    <div class="alert alert-info">
+      <pre>
+          class Player {
+            constructor(n) {
+              this.name = n;
+              this.enemy = null;
+            }
+            win() {
+              console.log(`${this.name}胜利了!`);
+            }
+            lose() {
+              console.log(`${this.name}失败了!`);
+            }
+            die() {
+              this.lose()
+              this.enemy.win()
+            }
+          }
+      
+          let p1 = new Player('zhanghui')
+          let p2 = new Player('zuoyutao')
+          p1.enemy = p2
+          p2.enemy = p1
+      
+          p1.die()</pre>
+    </div>
+    <h4>团战案例一(两个队的战斗)</h4>
+
+    <div class="alert alert-success">
+      <pre>
+        class Player {
+          constructor(name, team) {
+            this.name = name;//名字
+            this.team = team; // 队伍标识
+            this.enemys = [];//敌对列表
+            this.partners = [];//队友列表
+            this.live = true;//存活状态
+          }
+          win() {
+            console.log(`${this.name}胜利！`)
+          }
+          lose() {
+            console.log(`${this.name}失败！`)
+          }
+          die() {
+            this.live = false;
+            let ifAllDie = true;
+    
+            for (var i = 0; i < this.partners.length; i++) {
+              if (this.partners[i].live) {
+                ifAllDie = false
+                break
+              }
+            }
+            if (ifAllDie) {
+              this.lose()
+              this.partners.forEach(p => {
+                p.lose()
+              })
+              this.enemys.forEach(p => {
+                p.win()
+              })
+            }
+          }
+        }
+        // 借助工厂来确定队友及敌人
+        let playerFactory = (function () {
+          let allPlayers = []; // 用来存储加入游戏的玩家
+          return function (name, team) {
+            let player = new Player(name, team)
+            allPlayers.forEach(p => {
+              let which = p.team === team ? 'partners' : 'enemys'
+              p[which].push(player)
+              player[which].push(p)
+              /*可以优化
+                if (p.team === team) {
+                p.partners.push(player)
+                player.enemys.push(p)
+              } else {
+                player.partners.push(p)
+                p.enemys.push(player)
+              } */
+            })
+            allPlayers.push(player)
+            return player
+          }
+        })()
+    
+        let p1 = playerFactory("阿飞", "red");
+        let p2 = playerFactory("朱雀", "red");
+        let p3 = playerFactory("心艾", "red");
+        let p4 = playerFactory("乌拉", "red");
+        let p5 = playerFactory("冰冰", "blue");
+        let p6 = playerFactory("言心", "blue");
+        let p7 = playerFactory("茜茜", "blue");
+        let p8 = playerFactory("桃子", "blue");
+        p1.die()
+        p2.die()
+        p3.die()
+        p4.die()</pre>
+    </div>
+    <img src="assets/img/middle1.png" alt="">
+    <h4>团战案例二（中介者模式多个队的战斗）</h4>
+
+    <button type="button" class="btn btn-primary" data-team='blue' data-name='阿飞'>阿飞</button>
+    <button type="button" class="btn btn-primary" data-team='blue' data-name='朱雀'>朱雀</button>
+    <button type="button" class="btn btn-success" data-team='green' data-name='心艾'>心艾</button>
+    <button type="button" class="btn btn-success" data-team='green' data-name='乌拉'>乌拉</button>
+    <button type="button" class="btn btn-warning" data-team='red' data-name='冰冰'>冰冰</button>
+    <button type="button" class="btn btn-warning" data-team='red' data-name='言心'>言心</button>
+    <button type="button" class="btn btn-default" data-team='black' data-name='张辉'>张辉</button>
+    <button type="button" class="btn btn-default" data-team='black' data-name='左玉涛'>左玉涛</button>
+    <a class="btn btn-info" href="#" role="button">查看所有队伍信息</a>
+
+    <div class="alert alert-success">
+      请查看控制台
+    </div>
+
+
+  </div>
+  <script>
+    class Player {
+      constructor(n, t) {
+        this.name = n;
+        this.team = t;
+        this.live = true
+        playerMeditor.playerAdd(this)
+      }
+      win() {
+        console.log(`${this.name}胜利了!`)
+      }
+      lose() {
+        console.log(`${this.name}失败了!`)
+      }
+      die() {
+        this.live = false
+        playerMeditor.playerDie(this)
+      }
+    }
+    let playerMeditor = (function () {
+      let teamInfo = {
+        'red': [] // 自动生成团队信息
+      }
+      return {
+        playerView() {
+          console.log(teamInfo)
+        },
+        playerAdd(player) {
+          let team = player.team;
+          if (!teamInfo[team]) {
+            teamInfo[team] = []
+          }
+          teamInfo[team].push(player)
+        },
+        playerDie(player) {
+          let team = player.team;
+          let allDie = true;
+          for (var i = 0; i < teamInfo[team].length; i++) {
+            if (teamInfo[team][i].live) {
+              allDie = false
+              break;
+            }
+          }
+          if (allDie) {
+            teamInfo[team].forEach(element => {
+              element.lose()
+            });
+            teamInfo[team].lose = true;
+            let liveTeam = []
+            for (const v of Object.values(teamInfo)) {
+              if (!v.lose) {
+                liveTeam.push(v)
+              }
+            }
+            if (liveTeam.length === 1) {
+              liveTeam[0].forEach(p => {
+                p.win()
+              })
+            }
+          }
+        }
+      }
+    })()
+
+    let instances = []
+    $('button').each(function () {
+      let name = $(this).data('name')
+      let team = $(this).data('team')
+      instances.push(new Player(name, team))
+    })
+
+    $('button[type="button"]').on('click', function () {
+      var idx = $('button[type="button"]').index($(this))
+      instances[idx].die()
+    })
+
+    $('.btn.btn-info').on('click', function () {
+      playerMeditor.playerView()
+    })
+
+    // let p1 = new Player("阿飞", "red");
+    // let p2 = new Player("朱雀", "red");
+    // let p3 = new Player("心艾", "yellow");
+    // let p4 = new Player("乌拉", "yellow");
+    // let p5 = new Player("冰冰", "yellow");
+    // let p6 = new Player("言心", "blue");
+    // let p7 = new Player("茜茜", "blue");
+
+    // p1.die()
+    // p2.die()
+    // p6.die()
+    // p7.die()
+    // playerMeditor.playerView() // 查看所有队伍信息
+  </script>
+</body>
+
+</html>
