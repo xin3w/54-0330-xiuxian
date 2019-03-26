@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <h4>迭代器模式（lterator）：在不暴露对象内部结构的同时，可以顺序地访问集合对象内部的各个元素。</h4>
+    <h5>实现forEach的迭代器(对低版本不支持的浏览器进行实现)</h5>
+    <div class="alert alert-success">
+      <pre>
+        // 内部迭代器 forEach，every，map,$.each...
+        Array.prototype.forEach = Array.prototype.forEach || function (cb) {
+          for (var i = 0; i < this.length; i++) {
+            cb(this[i], i, this)
+          }
+        }</pre>
+      <pre>
+        let arr = [1, 2, 3]
+        let iterator = arr[Symbol.iterator]();
+        console.log(iterator);
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())</pre>
+    </div>
+
+  </div>
+  <script>
+    Array.prototype.forEach = Array.prototype.forEach || function (cb) {
+      for (var i = 0; i < this.length; i++) {
+        cb(this[i], i, this)
+      }
+    }
+    let arr = [1, 2, 3]
+    let iterator = arr[Symbol.iterator]();
+    console.log(iterator);
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+
+  </script>
+</body>
+
+</html>
