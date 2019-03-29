@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+    <hr>
+    <div class="input-group">
+      <input type="text" class="form-control" id="input" placeholder="请输入要验证的内容">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" data-reg='num'>验证数字</button>
+        <button type="button" class="btn btn-default" data-reg='xnum'>验证n位的数字</button>
+      </span>
+    </div>
+    <hr>
+    <div class="alert alert-warning">
+    </div>
+  </div>
+  <script>
+    $(function () {
+      var reg = {
+        "num": /^[0-9]*$/,
+        "xnum": /^\d{3}$/
+      }
+      $('button').click(function (e) {
+        e.preventDefault();
+        var val = $('#input').val();
+        var name = $(this).data('reg');
+        var result = reg[name].test(val)
+				console.log("TCL: result", result)
+        var str = `${$(this).html()}：${val}<br />结果：`
+        $('.alert').html(str)
+      });
+    });
+
+  </script>
+</body>
+
+</html>

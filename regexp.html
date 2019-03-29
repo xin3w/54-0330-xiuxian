@@ -24,7 +24,9 @@
       \s 匹配空格
       \S 匹配非空格
       \b 匹配单词边界 /\byou\b/
-      \B 匹配非单词边界</pre>
+      \B 匹配非单词边界
+      .  匹配所有字符 除\n\t\r
+    </pre>
     <h2>量词</h2>
     <pre class="alert alert-danger">
       /\d{20}/ 匹配20个连续的数字
@@ -34,13 +36,13 @@
       ? {0，1} 要未不匹配，要未匹配一个
       * {0,} 有就匹配，没有就不匹配
       {4,20} 贪婪匹配 见16行
-      {4,20}? 懒惰匹配 多加个?号 即能匹配4个就不匹配20个</pre>
+      {4,20}? 懒惰匹配 多加个?号 即能匹配4个就不匹配20个<img src="assets/img/regexp1.png" alt=""></pre>
     <h2>修饰符</h2>
     <pre class="alert alert-danger">
       g 全局匹配
       i 不区分大小写
       m 换行匹配
-      /\d+/g === new RegExp("\\d+","g") 这两个是相等的写法 注意体会</pre>
+      /\d+/g === new RegExp("\\d+","g") 这两个是相等的写法 注意体会<img src="assets/img/regexp2.png" alt=""></pre>
     <h2>组 （）</h2>
     <h2>字符集</h2>
     <pre class="alert alert-danger">
@@ -59,57 +61,59 @@
       字符串.replace(正则,目标值) 这个目标值可以是一个function return什么就替换成什么(这个函数有隐型的参数)</pre>
 
     <h2>实例</h2>
-    <pre class="alert alert-success">
-      var str = 'abababc'
-      var reg= /(ab)+(c)/
-      var reg= /(ab)+(c)/g
-      console.log(str.match(reg)) // ["abababc", "ab", "c"]
-      
-      var str = "abc张"
-      var reg = /a(w|b|c|d)+/g
-      console.log(str.match(reg))
-      
-      var str = "abc"
-      var reg = /[abc]/g
-      console.log(str.match(reg))
-      
-      var str ="zhanghui"
-      var re = /[zg]/g
-      console.log(str.match(re))
-      
-      var str = "{5}"
-      // var re = /\{5\}/
-      var re = /[{5}]+/
-      console.log(str.match(re))
-      
-      var ipt = document.getElementById('qq')
-      var btn = document.querySelector('button')
-      btn.onclick=function(){
-        var val = ipt.value
-        var reg = /^[1-9]\d{3,7}$/g
-        console.log(reg.test(val))
-      }
-      
-      var str = 'abcabcc'
-      var reg = /(ab)(c)\2/; // 捕获组即第二个括号双c
-      console.log(str.match(reg))
-      
-      var str = "abcjkjkabcjkk";
-      var reg = /(ab)(c)(j(k))\4/; // 双K捕获，注意()的顺序
-      console.log(str.match(reg))
-      
-      var str = "a1b2"
-      var reg = /(a-z\d)\1/ // a1b2无法捕获到a1a1才可
-      console.log(str.match(reg)
-      
-      var str = "a454d6dga4"
-      var reg = /(a4)(?:54).*(ga)\2/ //?:表示不占用捕获组的位置 跳过当前捕获组
-      console.log(str.match(reg))
-      
-      var str = "Windows10"
-      var reg = /Windows(?=10)/ // 后面必须是10才能匹配成功的Windows
-      var reg = /Windows(?!98)/ // 只要不是98就能匹配Windows 
-      console.log(str.match(reg))</pre>
+<pre class="alert alert-success">
+var str = 'abababc'
+var reg= /(ab)+(c)/
+console.log(str.match(reg)) // ["abababc", "ab", "c"]
+<img src="assets/img/regexp3.png" alt="">
+var reg= /(ab)+(c)/g
+console.log(str.match(reg)) // ["abababc"] 这个实带g修饰符的
+
+var str = "abc张"
+var reg = /a(w|b|c|d)+/g
+console.log(str.match(reg))
+
+var str = "abc"
+var reg = /[abc]/g
+console.log(str.match(reg))
+
+var str ="zhanghui"
+var re = /[zg]/g
+console.log(str.match(re))
+
+var str = "{5}"
+// var re = /\{5\}/
+var re = /[{5}]+/
+console.log(str.match(re))
+
+var ipt = document.getElementById('qq')
+var btn = document.querySelector('button')
+btn.onclick=function(){
+  var val = ipt.value
+  var reg = /^[1-9]\d{3,7}$/g
+  console.log(reg.test(val))
+}
+
+var str = 'abcabcc'
+var reg = /(ab)(c)\2/; // 捕获组即第二个括号双c
+console.log(str.match(reg))
+
+var str = "abcjkjkabcjkk";
+var reg = /(ab)(c)(j(k))\4/; // 双K捕获，注意()的顺序
+console.log(str.match(reg))
+
+var str = "a1b2"
+var reg = /(a-z\d)\1/ // a1b2无法捕获到a1a1才可
+console.log(str.match(reg)
+
+var str = "a454d6dga4"
+var reg = /(a4)(?:54).*(ga)\2/ //?:表示不占用捕获组的位置 跳过当前捕获组
+console.log(str.match(reg))
+
+var str = "Windows10"
+var reg = /Windows(?=10)/ // 后面必须是10才能匹配成功的Windows
+var reg = /Windows(?!98)/ // 只要不是98就能匹配Windows 
+console.log(str.match(reg))</pre>
 
 
   </div>
@@ -131,11 +135,19 @@
       // \d{3}[\dx]
       // $/i
       idCard: /^[1-9]\d{5}(18|19|20)\d{2}(02(0[1-9]|[12][0-9])|(0[1,3-9]|1[0-2])(0[1-9]|[12][0-9]|3[01]))\d{3}[\dx]$/i,
-      emial: /^[1-9a-z_]\w*@[0-9a-z]{2,}\.[a-z]{2,6}(\.net)?$/i
+      emial: /^[1-9a-z_]\w*@[0-9a-z]{2,}\.[a-z]{2,6}(\.net)?$/i,
+      hour24:/\b([01]?[0-9]|2[0-3]):([0-5]\d)\b/,
+      ip:/^/
     }
     var str = "110221198207295614"
     console.log(reg.idCard.test(str))
+    jQuery.getQueryString = function (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]); return null;
+    }
   </script>
+
 </body>
 
 </html>

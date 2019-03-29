@@ -169,6 +169,10 @@
           "url": "regexp.html"
         },
         {
+          "title": "正则2",
+          "url": "regexp2.html"
+        },
+        {
           "title": "浏览器版本判断",
           "url": "browser.html"
         }
