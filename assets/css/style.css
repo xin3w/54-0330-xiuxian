@@ -397,8 +397,8 @@ body {
   height: 100%;
 }
 pre {
-  font-family: 'Inconsolata', 'Courier New', Courier, monospace;
   font-size: 16px;
+  font-family: 'Inconsolata', 'Courier New', Courier, monospace;
 }
 #example1 .imgs {
   height: 600px;
@@ -727,4 +727,13 @@ pre {
   position: absolute;
   left: 100px;
   top: 0;
+}
+#regexp2 .container {
+  padding: 50px 0;
+}
+#regexp2 .tooltip {
+  font-family: 'Courier New', 'Inconsolata', Courier, monospace;
+}
+#regexp2 .btn {
+  margin-bottom: 5px;
 }

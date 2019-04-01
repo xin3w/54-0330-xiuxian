@@ -11,36 +11,174 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
   <script src="assets/js/main.js"></script>
 </head>
 
-<body id="">
+<body id="regexp2">
   <div class="container">
-    <hr>
-    <div class="input-group">
-      <input type="text" class="form-control" id="input" placeholder="请输入要验证的内容">
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" data-reg='num'>验证数字</button>
-        <button type="button" class="btn btn-default" data-reg='xnum'>验证n位的数字</button>
-      </span>
+    <div class="row">
+
+      <div class="alert alert-warning navbar-fixed-top"></div>
+      <div class="form-group input-group-lg navbar-fixed-bottom">
+        <input type="text" class="form-control" id="input" placeholder="请输入要验证的内容">
+      </div>
+
+
+      <hr>
+      <h4>校验数字的表达式</h4>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='01'>验证数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='02'>验证3位的数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='03'>最少3位的数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='04'>5-8位的数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='05'>零和非零开头的数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='06'>非零开头的最多带两位小数的数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='07'>带1-2位小数的正数或负数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='08'>正数、负数、和小数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='09'>有两位小数的正实数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='10'>有1~3位小数的正实数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='11'>非零的正整数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='12'>非零的负整数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='13'>非负整数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='14'>非正整数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='15'>非负浮点数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='16'>非正浮点数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='17'>正浮点数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='18'>负浮点数</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='19'>浮点数</button>
+      <hr>
+      <h4>校验字符的表达式</h4>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str1'>汉字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str2'>英文和数字</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str3'>长度为3-20的所有字符</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str4'>由26个英文字母组成的字符串</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str5'>由26个大写英文字母组成的字符串</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str6'>由26个小写英文字母组成的字符串</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str7'>由数字和26个英文字母组成的字符串</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str8'>由数字、26个英文字母或者下划线组成的字符串</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str9'>中文、英文、数字包括下划线</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str10'>中文、英文、数字但不包括下划线等符号</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str11'>可以输入含有^%&',;=?$\"等字符</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='str12'>禁止输入含有~的字符</button>
+      <h4>特殊需求表达式</h4>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s1'>Email地址</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s2'>域名</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s3'>InternetURL</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s4'>手机号码</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s5'>电话号码("XXX-XXXXXXX"、"XXXX-XXXXXXXX"、"XXX-XXXXXXX"、"XXX-XXXXXXXX"、"XXXXXXX"和"XXXXXXXX)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s6'>国内电话号码(0511-4405222、021-87888822)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s7'>身份证号(15位、18位数字)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s8'>短身份证号码(数字、字母x结尾)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s9'>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s10'>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s11'>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s12'>日期格式</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s13'>一年的12个月(01～09和1～12)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s14'>一个月的31天(01～09和1～31)</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s15'>有四种钱的表示形式我们可以接受:"10000.00" 和 "10,000.00", 和没有 "分" 的 "10000" 和 "10,000"</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s16'>这表示任意一个不以0开头的数字,但是,这也意味着一个字符"0"不通过,所以我们采用下面的形式/button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s17'>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s18'>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分/button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s19'>必须说明的是,小数点后面至少应该有1位数,所以"10."是不通过的,但是 "10" 和 "10.2" 是通过的</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s20'>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s21'>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s22'>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s23'>xml文件</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s24'>中文字符的正则表达式</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s25'>双字节字符</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s26'>空白行的正则表达式</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s27'>HTML标记的正则表达式</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s28'>首尾空白字符的正则表达式</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s29'>腾讯QQ号</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s31'>中国邮政编码</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s32'>提取IP地址时有用</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-reg='s33'>IP地址</button>
     </div>
-    <hr>
-    <div class="alert alert-warning">
-    </div>
+    
   </div>
   <script>
     $(function () {
       var reg = {
-        "num": /^[0-9]*$/,
-        "xnum": /^\d{3}$/
+        "01": /^[0-9]*$/,
+        "02": /^\d{3}$/,
+        "03": /^\d{3,}$/,
+        "04": /^\d{5,8}$/,
+        "05": /^(0|[1-9][0-9]*)$/,
+        "06": /^([1-9][0-9]*)+(.[0-9]{1,2})?$/,
+        "07": /^(\-)?\d+(\.\d{1,2})?$/,
+        "08": /^(\-|\+)?\d+(\.\d+)?$/,
+        "09": /^[0-9]+(.[0-9]{2})?$/,
+        "10": /^[0-9]+(.[0-9]{1,3})?$/,
+        "11": /^[1-9]\d*$/,
+        "12": /^-[1-9]\d*$/,
+        "13": /^\d+$/,
+        "14": /^-[1-9]\d*|0$/,
+        "15": /^\d+(\.\d+)?$/,
+        "16": /^((-\d+(\.\d+)?)|(0+(\.0+)?))$/,
+        "17": /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/,
+        "18": /^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$/,
+        "19": /^(-?\d+)(\.\d+)?$/,
+
+        "str1": /^[\u4e00-\u9fa5]{0,}$/,
+        "str2": /^[A-Za-z0-9]+$/,
+        "str3": /^.{3,20}$/,
+        "str4": /^[A-Za-z]+$/,
+        "str5": /^[A-Z]+$/,
+        "str6": /^[a-z]+$/,
+        "str7": /^[A-Za-z0-9]+$/,
+        "str8": /^\w+$ /,
+        "str9": /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
+        "str10": /^[\u4E00-\u9FA5A-Za-z0-9]+$/,
+        "str11": /[^%&',;=?$\x22]+/,
+        "str12": /[^~\x22]+/,
+
+        "s1": /^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+        "s2": /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/,
+        "s3":/^http:\/\/([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/,
+        "s4":/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,
+        "s5":/^((\d{3,4}-)|\d{3,4}-)?\d{7,8}$/,
+        "s6":/\d{3}-\d{8}|\d{4}-\d{7}/,
+        "s7":/^\d{15}|\d{18}$/,
+        "s8":/^([0-9]){7,18}(x|X)?$/,
+        "s9":/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/,
+        "s10":/^[a-zA-Z]\w{5,17}$/,
+        "s11":/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/,
+        "s12":/^\d{4}-\d{1,2}-\d{1,2}/,
+        "s13":/^(0?[1-9]|1[0-2])$/,
+        "s14":/^((0?[1-9])|((1|2)[0-9])|30|31)$/,
+        "s15":/^[1-9][0-9]*$/,
+        "s16":/^(0|[1-9][0-9]*)$/,
+        "s17":/^(0|-?[1-9][0-9]*)$/,
+        "s18":/^[0-9]+(.[0-9]+)?$/,
+        "s19":/^[0-9]+(.[0-9]{2})?$/,
+        "s20":/^[0-9]+(.[0-9]{1,2})?$/,
+        "s21":/^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$/,
+        "s22":/^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$/,
+        "s23":/^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$/,
+        "s24":/[\u4e00-\u9fa5]/,
+        "s25":/[^\x00-\xff]/,
+        "s26":/\n\s*\r/,
+        "s27":/<(\S*?)[^>]*>.*?<\/\1>|<.*?\/>/,
+        "s28":/^\s*|\s*$/,
+        "s29":/[1-9][0-9]{4,}/,
+        "s31":/[1-9]\d{5}(?!\d)/,
+        "s32":/\d+\.\d+\.\d+\.\d+/,
+        "s33":/((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)/
       }
+      var cls= ['btn-danger','btn-info','btn-success','btn-warning','btn-primary'];
+      var len = cls.length;
+      $.each($('button'), function (i, v) {
+        var random = Math.floor(Math.random()* len) ;
+        $(this).attr('title', reg[$(this).data('reg')])
+        $(this).addClass(cls[random])
+      });
+      $('[data-toggle="tooltip"]').tooltip()
       $('button').click(function (e) {
         e.preventDefault();
         var val = $('#input').val();
         var name = $(this).data('reg');
         var result = reg[name].test(val)
-				console.log("TCL: result", result)
-        var str = `${$(this).html()}：${val}<br />结果：`
+        var str = `${$(this).html()}：${val}　　　　结果：${result}`
         $('.alert').html(str)
       });
     });
