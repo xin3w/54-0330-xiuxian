@@ -177,6 +177,15 @@
           "url": "browser.html"
         }
       ]
+    },
+    {
+      "category": "jquery",
+      "data": [
+        {
+          "title": "trigger",
+          "url": "jq-trigger.html"
+        }
+      ]
     }
   ]
 }
