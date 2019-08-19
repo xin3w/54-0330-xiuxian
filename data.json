@@ -186,6 +186,15 @@
           "url": "jq-trigger.html"
         }
       ]
+    },
+    {
+      "category": "css练习",
+      "data": [
+        {
+          "title": "flex",
+          "url": "flex.html"
+        }
+      ]
     }
   ]
 }

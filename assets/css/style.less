@@ -119,3 +119,44 @@ pre { font-size: 16px; .font1;}
 	.tooltip {.font2;}
 	.btn {margin-bottom: 5px;}
 }
+#flex {
+	.content {height:500px; background: #efefef;}
+	.box {background: #f00; color:#fff; text-align: center; margin:10px;}
+	.flex {display: flex;
+		&.dir-left {flex-direction: row;} // 默认值
+		&.dir-top {flex-direction: column;}
+		&.dir-right {flex-direction: row-reverse}
+		&.dir-bottom {flex-direction: column-reverse}
+		
+		&.nowrap {flex-wrap: nowrap;} // 默认值
+		&.wrap {flex-wrap: wrap;}
+		&.wrap-reverse {flex-wrap: wrap-reverse;} // 换行反转
+
+		&.flow {flex-flow: row nowrap;} // 上面两个属性的简写
+
+		&.main-left {justify-content: flex-start;} // 默认值 水平左对齐
+		&.main-right {justify-content: flex-end;}
+		&.main-center {justify-content: center;}
+		&.main-justify {justify-content: space-between;}
+
+		&.cross-top {align-items: flex-start} // 默认值 垂直顶部对齐
+		&.cross-bottom {align-items: flex-end}
+		&.cross-center {align-items: center}
+		&.cross-base {align-items: baseline}
+		&.cross-stretch {align-items: stretch}
+
+		// 多轴对齐方式 align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+
+		// .box:nth-of-type(5) {order: 10} // 子元素排序 默认为0，值越大越靠后
+
+		// .box:nth-of-type(1){flex-grow:1} // 有剩余空间就放大
+		// .box:nth-of-type(3){flex-grow:1} // 放大
+
+		.box:nth-of-type(3){flex-shrink:1} // 空间不足就缩小
+
+
+
+
+
+	}
+}

@@ -737,3 +737,70 @@ pre {
 #regexp2 .btn {
   margin-bottom: 5px;
 }
+#flex .content {
+  height: 500px;
+  background: #efefef;
+}
+#flex .box {
+  background: #f00;
+  color: #fff;
+  text-align: center;
+  margin: 10px;
+}
+#flex .flex {
+  display: flex;
+}
+#flex .flex.dir-left {
+  flex-direction: row;
+}
+#flex .flex.dir-top {
+  flex-direction: column;
+}
+#flex .flex.dir-right {
+  flex-direction: row-reverse;
+}
+#flex .flex.dir-bottom {
+  flex-direction: column-reverse;
+}
+#flex .flex.nowrap {
+  flex-wrap: nowrap;
+}
+#flex .flex.wrap {
+  flex-wrap: wrap;
+}
+#flex .flex.wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+#flex .flex.flow {
+  flex-flow: row nowrap;
+}
+#flex .flex.main-left {
+  justify-content: flex-start;
+}
+#flex .flex.main-right {
+  justify-content: flex-end;
+}
+#flex .flex.main-center {
+  justify-content: center;
+}
+#flex .flex.main-justify {
+  justify-content: space-between;
+}
+#flex .flex.cross-top {
+  align-items: flex-start;
+}
+#flex .flex.cross-bottom {
+  align-items: flex-end;
+}
+#flex .flex.cross-center {
+  align-items: center;
+}
+#flex .flex.cross-base {
+  align-items: baseline;
+}
+#flex .flex.cross-stretch {
+  align-items: stretch;
+}
+#flex .flex .box:nth-of-type(3) {
+  flex-shrink: 1;
+}
