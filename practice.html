@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<link rel="shortcut icon" href="assets/img/favicon.ico" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+		<link rel="stylesheet" href="assets/css/style.css">
+		<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+		<script src="assets/js/main.js"></script>
+	</head>
+
+	<body id="create-array">
+		<div class="container">
+			<ol>
+				<li>创建一个数组并将所有填充为0？</li>
+				<li>在一个数组中查找最大或最小的数字?</li>
+				<li>创建一个二维数组?</li>
+				<li>找出上面最大数字的索引值？</li>
+				<li>创建一个类及方法？</li>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			// 1
+			let arr = new Array(10).fill(0)
+			console.log(1, arr)
+			// 2
+			let tempArr1 = [123, 123134, 1445, 13, 1348, 984, 25, 33]
+			let max = Math.max(...tempArr1)
+			console.log(2, max)
+			// 3
+			let arr2 = new Array(10).fill(0).map(() => [])
+			console.log(3, arr2)
+			// 4
+			let maxIdx = tempArr1.findIndex((item) => item === max)
+			console.log(4, maxIdx)
+			// 5
+			class class1 {
+				constructor(arg) {
+
+				}
+				go() {
+					console.log('go')
+				}
+			}
+			new class1().go();
+		</script>
+	</body>
+</html>

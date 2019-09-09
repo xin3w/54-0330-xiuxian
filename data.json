@@ -1,200 +1,198 @@
 {
-  "data": [
-    {
-      "category": "设计模式",
-      "data": [
-        {
-          "title": "单例模式",
-          "url": "danli.html"
-        },
-        {
-          "title": "工厂模式",
-          "url": "gongchang.html"
-        },
-        {
-          "title": "原型继承(es6/es5)",
-          "url": "yuanxing.html"
-        },
-        {
-          "title": "建造者模式",
-          "url": "jianzaozhe.html"
-        },
-        {
-          "title": "外观模式",
-          "url": "waiguan.html"
-        },
-        {
-          "title": "适配器模式",
-          "url": "shipeiqi.html"
-        },
-        {
-          "title": "代理模式",
-          "url": "daili.html"
-        },
-        {
-          "title": "装饰者模式",
-          "url": "zhuangshizhe.html"
-        },
-        {
-          "title": "桥接模式",
-          "url": "qiaojie.html"
-        },
-        {
-          "title": "组合模式",
-          "url": "zuhe.html"
-        },
-        {
-          "title": "享元模式",
-          "url": "xiangyuan.html"
-        },
-        {
-          "title": "模板方法模式",
-          "url": "mobanfangfa.html"
-        },
-        {
-          "title": "观察者模式",
-          "url": "guanchazhe.html"
-        },
-        {
-          "title": "状态模式",
-          "url": "zhuangtai.html"
-        },
-        {
-          "title": "策略模式",
-          "url": "celv.html"
-        },
-        {
-          "title": "命令模式",
-          "url": "cmd.html"
-        },
-        {
-          "title": "职责链模式",
-          "url": "chain.html"
-        },
-        {
-          "title": "访问者模式",
-          "url": "visitor.html"
-        },
-        {
-          "title": "中介者模式",
-          "url": "middle.html"
-        },
-        {
-          "title": "备忘录模式",
-          "url": "note.html"
-        },
-        {
-          "title": "迭代器模式",
-          "url": "iterator.html"
-        },
-        {
-          "title": "解析器模式",
-          "url": "jiexiqi.html"
-        },
-        {
-          "title": "markdown",
-          "url": "markdown.html"
-        }
-      ]
-    },
-    {
-      "category": "基础练习",
-      "data": [
-        {
-          "title": "带循环开关的简单焦点切换",
-          "url": "lunbotu.html"
-        },
-        {
-          "title": "模拟复选框",
-          "url": "fuxuankuang.html"
-        },
-        {
-          "title": "乘法表",
-          "url": "chengfabiao.html"
-        },
-        {
-          "title": "打印菱形",
-          "url": "lingxing.html"
-        },
-        {
-          "title": "打印三角形",
-          "url": "sanjiaoxing.html"
-        },
-        {
-          "title": "qq菜单",
-          "url": "qq.html"
-        },
-        {
-          "title": "选项卡",
-          "url": "xuanxiangka.html"
-        },
-        {
-          "title": "双层选项卡",
-          "url": "doubleka.html"
-        },
-        {
-          "title": "五星好评",
-          "url": "star.html"
-        },
-        {
-          "title": "数组去重",
-          "url": "uniqeArray.html"
-        },
-        {
-          "title": "地区筛选",
-          "url": "areaSelect.html"
-        },
-        {
-          "title": "单个小球运动",
-          "url": "singleBall.html"
-        },
-        {
-          "title": "多个小球运动",
-          "url": "balls.html"
-        },
-        {
-          "title": "小球拖动",
-          "url": "dragBall.html"
-        },
-        {
-          "title": "tween版运动框架",
-          "url": "tween.html"
-        },
-        {
-          "title": "速度版时间框架",
-          "url": "speedTime.html"
-        },
-        {
-          "title": "正则",
-          "url": "regexp.html"
-        },
-        {
-          "title": "正则2",
-          "url": "regexp2.html"
-        },
-        {
-          "title": "浏览器版本判断",
-          "url": "browser.html"
-        }
-      ]
-    },
-    {
-      "category": "jquery",
-      "data": [
-        {
-          "title": "trigger",
-          "url": "jq-trigger.html"
-        }
-      ]
-    },
-    {
-      "category": "css练习",
-      "data": [
-        {
-          "title": "flex",
-          "url": "flex.html"
-        }
-      ]
-    }
-  ]
+	"data": [{
+			"category": "设计模式",
+			"data": [{
+					"title": "单例模式",
+					"url": "danli.html"
+				},
+				{
+					"title": "工厂模式",
+					"url": "gongchang.html"
+				},
+				{
+					"title": "原型继承(es6/es5)",
+					"url": "yuanxing.html"
+				},
+				{
+					"title": "建造者模式",
+					"url": "jianzaozhe.html"
+				},
+				{
+					"title": "外观模式",
+					"url": "waiguan.html"
+				},
+				{
+					"title": "适配器模式",
+					"url": "shipeiqi.html"
+				},
+				{
+					"title": "代理模式",
+					"url": "daili.html"
+				},
+				{
+					"title": "装饰者模式",
+					"url": "zhuangshizhe.html"
+				},
+				{
+					"title": "桥接模式",
+					"url": "qiaojie.html"
+				},
+				{
+					"title": "组合模式",
+					"url": "zuhe.html"
+				},
+				{
+					"title": "享元模式",
+					"url": "xiangyuan.html"
+				},
+				{
+					"title": "模板方法模式",
+					"url": "mobanfangfa.html"
+				},
+				{
+					"title": "观察者模式",
+					"url": "guanchazhe.html"
+				},
+				{
+					"title": "状态模式",
+					"url": "zhuangtai.html"
+				},
+				{
+					"title": "策略模式",
+					"url": "celv.html"
+				},
+				{
+					"title": "命令模式",
+					"url": "cmd.html"
+				},
+				{
+					"title": "职责链模式",
+					"url": "chain.html"
+				},
+				{
+					"title": "访问者模式",
+					"url": "visitor.html"
+				},
+				{
+					"title": "中介者模式",
+					"url": "middle.html"
+				},
+				{
+					"title": "备忘录模式",
+					"url": "note.html"
+				},
+				{
+					"title": "迭代器模式",
+					"url": "iterator.html"
+				},
+				{
+					"title": "解析器模式",
+					"url": "jiexiqi.html"
+				},
+				{
+					"title": "markdown",
+					"url": "markdown.html"
+				}
+			]
+		},
+		{
+			"category": "基础练习",
+			"data": [{
+					"title": "带循环开关的简单焦点切换",
+					"url": "lunbotu.html"
+				},
+				{
+					"title": "模拟复选框",
+					"url": "fuxuankuang.html"
+				},
+				{
+					"title": "乘法表",
+					"url": "chengfabiao.html"
+				},
+				{
+					"title": "打印菱形",
+					"url": "lingxing.html"
+				},
+				{
+					"title": "打印三角形",
+					"url": "sanjiaoxing.html"
+				},
+				{
+					"title": "qq菜单",
+					"url": "qq.html"
+				},
+				{
+					"title": "选项卡",
+					"url": "xuanxiangka.html"
+				},
+				{
+					"title": "双层选项卡",
+					"url": "doubleka.html"
+				},
+				{
+					"title": "五星好评",
+					"url": "star.html"
+				},
+				{
+					"title": "数组去重",
+					"url": "uniqeArray.html"
+				},
+				{
+					"title": "地区筛选",
+					"url": "areaSelect.html"
+				},
+				{
+					"title": "单个小球运动",
+					"url": "singleBall.html"
+				},
+				{
+					"title": "多个小球运动",
+					"url": "balls.html"
+				},
+				{
+					"title": "小球拖动",
+					"url": "dragBall.html"
+				},
+				{
+					"title": "tween版运动框架",
+					"url": "tween.html"
+				},
+				{
+					"title": "速度版时间框架",
+					"url": "speedTime.html"
+				},
+				{
+					"title": "正则",
+					"url": "regexp.html"
+				},
+				{
+					"title": "正则2",
+					"url": "regexp2.html"
+				},
+				{
+					"title": "浏览器版本判断",
+					"url": "browser.html"
+				}
+			]
+		},
+		{
+			"category": "jquery",
+			"data": [{
+				"title": "trigger",
+				"url": "jq-trigger.html"
+			}]
+		},
+		{
+			"category": "练习",
+			"data": [{
+					"title": "flex",
+					"url": "flex.html"
+				},
+				{
+					"title": "代码练习",
+					"url": "practice.html"
+				}
+			]
+		}
+	]
 }
