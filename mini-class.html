@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="">
+  <script>
+    // es5中类的定义
+    function ClassA (){}
+    ClassA.prototype.fn1 = function(){
+      console.log('ClassA fn1')
+    }
+    new ClassA().fn1()
+
+    // es6中类的定义
+    class ClassB {
+      constructor(){}
+      fn1(){
+        console.log("ClassB fn1")
+      }
+    }
+    new ClassB().fn1()
+
+    // es5的继承
+    for(var key in ClassA.prototype){
+      console.log(key)
+    }
+
+    // es6的继承不能用上面的方法来继承，因为es6类的构造，上面的方法和属性默认是不可枚举的。
+    console.log(Object.getOwnPropertyDescriptors(ClassB.prototype)) //查看是否是可枚举的
+
+    // es6的继承
+    class ClassBB extends ClassB {
+      constructor(){
+        super()
+      }
+      fn2(){}
+    }
+    new ClassBB().fn1() // 这个新的继承类就有了老类的方法。
+
+
+  </script>
+</body>
+
+</html>

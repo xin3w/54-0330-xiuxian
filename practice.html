@@ -1,53 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Document</title>
-		<link rel="shortcut icon" href="assets/img/favicon.ico" />
-		<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
-		<link rel="stylesheet" href="assets/css/style.css">
-		<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-		<script src="assets/js/main.js"></script>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="shortcut icon" href="assets/img/favicon.ico" />
+	<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+	<script src="assets/js/main.js"></script>
+</head>
 
-	<body id="create-array">
-		<div class="container">
-			<ol>
-				<li>创建一个数组并将所有填充为0？</li>
-				<li>在一个数组中查找最大或最小的数字?</li>
-				<li>创建一个二维数组?</li>
-				<li>找出上面最大数字的索引值？</li>
-				<li>创建一个类及方法？</li>
-			</ol>
-		</div>
-		<script type="text/javascript">
-			// 1
-			let arr = new Array(10).fill(0)
-			console.log(1, arr)
-			// 2
-			let tempArr1 = [123, 123134, 1445, 13, 1348, 984, 25, 33]
-			let max = Math.max(...tempArr1)
-			console.log(2, max)
-			// 3
-			let arr2 = new Array(10).fill(0).map(() => [])
-			console.log(3, arr2)
-			// 4
-			let maxIdx = tempArr1.findIndex((item) => item === max)
-			console.log(4, maxIdx)
-			// 5
-			class class1 {
-				constructor(arg) {
+<body id="create-array">
+	<div class="container">
+		<ol>
+			<li>创建一个数组并将所有填充为0？</li>
+			<li>在一个数组中查找最大或最小的数字?</li>
+			<li>创建一个二维数组?</li>
+			<li>找出上面最大数字的索引值？</li>
+			<li>创建一个类及方法？</li>
+			<li>获取区间内的随机数？</li>
+			<li>随机打乱一个数组的排序</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		// 1
+		let arr = new Array(10).fill(0)
+		console.group(1)
+		console.log(arr)
+		console.groupEnd()
+		// 2
+		let tempArr1 = [123, 123134, 1445, 13, 1348, 984, 25, 33]
+		let max = Math.max(...tempArr1)
+		console.group(2)
+		console.log(max)
+		console.groupEnd()
+		// 3
+		let arr2 = new Array(10).fill(0).map(() => [])
+		console.group(3)
+		console.log(arr2)
+		console.groupEnd()
+		// 4
+		let maxIdx = tempArr1.findIndex((item) => item === max)
+		console.group(4)
+		console.log(maxIdx)
+		console.groupEnd()
+		// 5
+		class class1 {
+			constructor(arg) {
 
-				}
-				go() {
-					console.log('go')
-				}
 			}
-			new class1().go();
-		</script>
-	</body>
+			go() {
+				console.log('go')
+			}
+		}
+		console.group(5)
+		new class1().go()
+		console.groupEnd()
+		// 6
+		function random(min, max) {
+			return Math.floor(Math.random() * (max + 1 - min) + min)
+		}
+		console.group(6)
+		for (var i = 0; i < 100; i++) {
+			var a = random(0, 4)
+			if (a === 4) {
+				console.log(i, a)
+			}
+		}
+		console.groupEnd()
+		// 7
+		var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		array.sort(function () {
+			return Math.random() > 0.5 ? -1 : 1
+		})
+		console.group(7)
+		console.log(array)
+		console.groupEnd()
+	</script>
+</body>
+
 </html>

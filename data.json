@@ -1,7 +1,9 @@
 {
-	"data": [{
+	"data": [
+		{
 			"category": "设计模式",
-			"data": [{
+			"data": [
+				{
 					"title": "单例模式",
 					"url": "danli.html"
 				},
@@ -97,7 +99,8 @@
 		},
 		{
 			"category": "基础练习",
-			"data": [{
+			"data": [
+				{
 					"title": "带循环开关的简单焦点切换",
 					"url": "lunbotu.html"
 				},
@@ -177,20 +180,44 @@
 		},
 		{
 			"category": "jquery",
-			"data": [{
-				"title": "trigger",
-				"url": "jq-trigger.html"
-			}]
+			"data": [
+				{
+					"title": "trigger",
+					"url": "jq-trigger.html"
+				},
+				{
+					"title": "touchstart img to gray",
+					"url": "jq-touch.html"
+				}
+			]
 		},
 		{
 			"category": "练习",
-			"data": [{
+			"data": [
+				{
 					"title": "flex",
 					"url": "flex.html"
 				},
 				{
 					"title": "代码练习",
 					"url": "practice.html"
+				},
+				{
+					"title": "less gradient",
+					"url": "gradient.html"
+				},
+				{
+					"title": "test",
+					"url": "test.html"
+				}
+			]
+		},
+		{
+			"category": "小程序",
+			"data": [
+				{
+					"title": "类",
+					"url": "mini-class.html"
 				}
 			]
 		}

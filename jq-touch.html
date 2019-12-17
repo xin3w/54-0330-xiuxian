@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <style>
+    img.gray {filter: grayscale(100%);}
+  </style>
+</head>
+
+<body id="">
+  <div class="container">
+    <h1>这个在ios上面的移动动画中可能会有问题（悦享生活滑落礼物动画）</h1>
+    <img src="http://temp.im/640x260/f00">
+  </div>
+  <script>
+    $('.container').on('touchstart','img',function(){
+      $(this).addClass('gray')
+    })
+  </script>
+</body>
+
+</html>
