@@ -101,6 +101,22 @@
 			"category": "基础练习",
 			"data": [
 				{
+					"title": "canvas画笔",
+					"url": "canvas1.html"
+				},
+				{
+					"title": "canvas方块移动",
+					"url": "canvas2.html"
+				},
+				{
+					"title": "canvas测试",
+					"url": "canvas3.html"
+				},
+				{
+					"title": "canvas库",
+					"url": "canvas4.html"
+				},
+				{
 					"title": "带循环开关的简单焦点切换",
 					"url": "lunbotu.html"
 				},
@@ -218,6 +234,24 @@
 				{
 					"title": "类",
 					"url": "mini-class.html"
+				}
+			]
+		},
+		{
+			"category": "地图整理",
+			"data": [
+				{
+					"title": "百度地图",
+					"url": "baidu2.0.html"
+				}
+			]
+		},
+		{
+			"category": "Vue.js",
+			"data": [
+				{
+					"title": "随笔",
+					"url": "vue1.html"
 				}
 			]
 		}

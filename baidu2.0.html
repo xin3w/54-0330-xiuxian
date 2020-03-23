@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <style>
+    .anchorBL {
+      display: none;
+    }
+  </style>
+</head>
+
+<body id="baidu">
+  <div class="container">
+    <ol>
+      <li>地图的动态加载</li>
+      <li>隐藏版权</li>
+      <li>设置人性化地图</li>
+    </ol>
+  </div>
+  <div id="map"></div>
+  <script>
+    // 1
+    function initialize() {
+      var map = new BMap.Map('map');
+      map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+      console.group('map实例对象')
+      console.log(map)
+      console.groupEnd()
+      // +++++++++++++++++++++++++++++++++++++++++
+      map.enableScrollWheelZoom()
+      // +++++++++++++++++++++++++++++++++++++++++
+      // map.setMapStyleV2({
+      //   styleId: '96b44c07789da4193bdf04fb4b75553e'
+      // });
+      // +++++++++++++++++++++++++++++++++++++++++
+      var point = new BMap.Point(116.404, 39.915);
+      console.group('point实例对象')
+      console.log(point)
+      console.groupEnd()
+      // +++++++++++++++++++++++++++++++++++++++++
+      var myIcon = new BMap.Icon("./assets/img/marker.svg", new BMap.Size(129, 175), {
+        anchor: new BMap.Size(129 / 2, 175),
+        imageOffset: new BMap.Size(0, 0)   // 设置图片偏移 类似于精灵图  
+      });
+      console.group('Icon实例对象')
+      console.log(myIcon)
+      console.groupEnd()
+      var marker = new BMap.Marker(point, { icon: myIcon });        // 创建标注    
+      console.group('marker实例对象')
+      console.log(marker)
+      console.groupEnd()
+      var marker2 = new BMap.Marker(point);
+      map.addOverlay(marker);
+      map.addOverlay(marker2);
+      marker.enableDragging();
+      marker.addEventListener('dragend', function (e) {
+        console.log("marker当前位置：" + e.point.lng + ", " + e.point.lat);
+        map.openInfoWindow(infoWindow, new BMap.Point(e.point.lng, e.point.lat));
+
+      })
+      // +++++++++++++++++++++++++++++++++++++++++
+      console.group('Size实例对象')
+      console.log(new BMap.Size(23, 25))
+      console.groupEnd()
+      // +++++++++++++++++++++++++++++++++++++++++
+      console.group('获取覆盖物容器')
+      console.log(map.getPanes())
+      console.groupEnd()
+      // +++++++++++++++++++++++++++++++++++++++++
+      var infoWindow = new BMap.InfoWindow("World", {
+        width: 250,
+        height: 100,
+        title: "Hello"
+      });
+      map.openInfoWindow(infoWindow, map.getCenter());
+      console.group('信息窗口实例对象')
+      console.log(infoWindow)
+      console.groupEnd()
+      // +++++++++++++++++++++++++++++++++++++++++
+      console.group('交通流量图实例')
+      console.log(new BMap.TrafficLayer())
+      console.groupEnd()
+      map.removeTileLayer(new BMap.TrafficLayer());
+      // +++++++++++++++++++++++++++++++++++++++++
+      //根据daboxId创建自定义图层，用户可用自己创建的geotableid替换30960  
+      var customLayer = new BMap.CustomLayer({
+        geotableId: 207853,
+        q: '', //检索关键字  
+        tags: '', //空格分隔的多字符串  
+        filter: '' //过滤条件,参考http://lbsyun.baidu.com/index.php?title=lbscloud/api/geosearch  
+      });
+      map.addTileLayer(customLayer);//添加自定义图层 
+    }
+
+    function loadScript() {
+      var script = document.createElement("script");
+      script.src = "http://api.map.baidu.com/api?v=3.0&ak=W0wWiAlfv0hsKmH4R7fXqUK2RTRXWLsx&callback=initialize";
+      document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+
+  </script>
+</body>
+
+</html>

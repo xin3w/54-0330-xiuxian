@@ -1,8 +1,8 @@
 // 定义全局
 var pages = ['index.html'],
 	titles = ['目录页']
-jQuery.hrefReplace = function() {
-	$.each($("a"), function(index, value) {
+jQuery.hrefReplace = function () {
+	$.each($("a"), function (index, value) {
 		var aHref = $(this).attr("href");
 		if (aHref == "javascript:void(0)" || aHref == "" || aHref == "#") {
 			$(this).removeAttr("target");
@@ -10,7 +10,7 @@ jQuery.hrefReplace = function() {
 		}
 	});
 }
-jQuery.goPage = function() {
+jQuery.goPage = function () {
 	var reg = /[^\/]+(?!.*\/)/g;
 	var fileName = location.href.match(reg) ? location.href.match(reg)[0] : 'index.html';
 	var pos = 0;
@@ -20,7 +20,7 @@ jQuery.goPage = function() {
 			document.title = titles[pos]
 		}
 	}
-	document.onkeyup = function(e) {
+	document.onkeyup = function (e) {
 		var e = e || window.event;
 		switch (e.keyCode) {
 			case 37:
@@ -46,7 +46,7 @@ jQuery.goPage = function() {
 		}
 	};
 }
-jQuery.getQueryString = function(name) {
+jQuery.getQueryString = function (name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 	var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
 	var r = window.location.search.substr(1).match(reg);
@@ -59,12 +59,12 @@ jQuery.getQueryString = function(name) {
 		return null;
 	}
 }
-jQuery.init = function() {
+jQuery.init = function () {
 	$.ajax({
 		type: "get",
 		url: "data.json",
 		dataType: "JSON",
-		success: function(res) {
+		success: function (res) {
 			var data = res.data;
 			// 渲染首页目录列表
 			if ($('#index').length) {
@@ -96,7 +96,14 @@ jQuery.init = function() {
 
 }
 
-$(function() {
+$(function () {
 	$.init()
 	$.hrefReplace()
 });
+
+function randomColor() {
+	var r = Math.floor(Math.random() * 255)
+	var g = Math.floor(Math.random() * 255)
+	var b = Math.floor(Math.random() * 255)
+	return 'rgba(' + r + ',' + g + ',' + b + ',1)'
+}

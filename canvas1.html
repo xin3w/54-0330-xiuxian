@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body id="canvas">
+  <canvas id="c1" width="600" height="600"></canvas>
+  <div class="f-tac">
+    <button class="btn btn-primary" onclick="lineWidth1(10)">线粗细+</button>
+    <button onclick="lineWidth1(5)">线粗细-</button>
+  </div>
+  <script>
+    window.onload = function () {
+      lineWidth1(1)
+    }
+    function lineWidth1(num) {
+      var c1 = document.getElementById('c1');
+      var ctx = c1.getContext('2d')
+      console.log(ctx)
+      var linePx = num
+      ctx.lineCap = 'round'
+      ctx.lineJoin = 'round'
+      c1.onmousedown = function (ev) {
+        var ev = ev || window.event;
+        ctx.beginPath()
+        ctx.lineWidth = linePx
+        ctx.moveTo(ev.clientX - c1.offsetLeft, ev.clientY - c1.offsetTop)
+        document.onmousemove = function (ev) {
+          var ev = ev || window.event;
+          ctx.lineTo(ev.clientX - c1.offsetLeft, ev.clientY - c1.offsetTop)
+          ctx.stroke()
+        }
+        document.onmouseup = function () {
+          document.onmousemove = null
+          document.onmousedown = null
+          ctx.closePath()
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

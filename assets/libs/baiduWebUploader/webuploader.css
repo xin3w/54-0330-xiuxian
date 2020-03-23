@@ -1,0 +1,17 @@
+.webuploader-container {position:relative;float:left;}
+.webuploader-element-invisible {position:absolute !important;clip:rect(1px 1px 1px 1px);/* IE6,IE7 */    clip:rect(1px,1px,1px,1px);}
+.webuploader-pick {position:relative;display:inline-block;cursor:pointer;background:#8fb8ee;padding:5px 15px;color:#fff;text-align:center;border-radius:0px;overflow:hidden;}
+.webuploader-pick-hover {background:#00a2d4;}
+.webuploader-pick-disable {opacity:0.6;pointer-events:none;}
+
+#ctlBtn {background: #00a2d4;padding: 5px 15px; border: none; color: #fff; margin-left: 0.1rem;}
+#thelist {border: 1px solid #ddd; background: #eee; padding:0rem 0.2rem; margin-bottom: 0.1rem;}
+#thelist .item {border-bottom: 1px solid #ddd; padding:0.15rem 0;}
+#thelist .item:nth-last-child(1){border-bottom: none;}
+#thelist .item .info {position: relative; font-size: 0.22rem;}
+#thelist .item .info .remove-this {position: absolute; right:0; top:0; cursor: pointer;}
+#thelist .item .state {padding:0.1rem 0; color:green;}
+
+#thelistimg .thumbnail {width:100px; height:100px; float: left; position: relative;margin-right: 10px; border-radius: 0;}
+#thelistimg .thumbnail .remove-this {position: absolute; right:1px; top:1px;}
+#thelistimg .info {overflow: hidden; zoom:1; position: absolute; left:1px; right:1px; bottom:1px; background: rgba(0, 0, 0, 0.5); color:#fff; padding:5px 10px; text-align: center; text-overflow: ellipsis; white-space: nowrap;}
