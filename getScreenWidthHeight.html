@@ -29,24 +29,24 @@
 </head>
 
 <body id="">
-  
-  <div class="alert alert-success" style="font-size:0.3rem;">
-    <strong>当前屏幕宽度:</strong> <span id="w">123</span>
-    <hr>
-    <strong>当前屏幕高度:</strong> <span id="h">123</span>
+  <div class="container">
+    <div class="alert alert-success" style="font-size:16px; margin-top: 0.2rem;">
+      <strong>当前屏幕宽度:</strong> <span id="w">123</span>
+      <hr>
+      <strong>当前屏幕高度:</strong> <span id="h">123</span>-49(微信底部虚拟返回条高度)
+    </div>
   </div>
-  
   <script>
-  $(function () {
-    $.getWH()
-  });
-  $(window).on('resize', function () {
-    $.getWH()
-  });
-  $.getWH = function(){
-    $('#w').html($(window).width())
-    $('#h').html($(window).height())
-  }
+    $(function () {
+      $.getWH()
+    });
+    $(window).on('resize', function () {
+      $.getWH()
+    });
+    $.getWH = function () {
+      $('#w').html($(window).width())
+      $('#h').html($(window).height())
+    }
   </script>
 </body>
 
