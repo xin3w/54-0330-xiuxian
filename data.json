@@ -252,6 +252,37 @@
 				{
 					"title": "随笔",
 					"url": "vue1.html"
+				},
+				{
+					"title": "京东购物车",
+					"url": "vue2.html"
+				},
+				{
+					"title": "TODOLIST",
+					"url": "vue3.html"
+				},
+				{
+					"title": "嵌套子路由",
+					"url": "vue4.html"
+				}
+			]
+		}
+		,
+		{
+			"category": "模板库整理",
+			"data": [
+				{
+					"title": "库整理",
+					"url": "libs1.html"
+				}
+			]
+		},
+		{
+			"category": "测试",
+			"data": [
+				{
+					"title": "获取当前屏幕实际宽高",
+					"url": "getScreenWidthHeight.html"
 				}
 			]
 		}

@@ -896,3 +896,31 @@ pre {
   padding: 15px 0;
   cursor: pointer;
 }
+#app1 {
+  margin-top: 50px;
+}
+#app1 .nav {
+  background: #eee;
+  position: relative;
+  z-index: 2;
+}
+#app1 .nav a {
+  height: 35px;
+  line-height: 35px;
+  display: block;
+  float: left;
+  width: 25%;
+  text-align: center;
+  border: 1px solid #eee;
+}
+#app1 .nav a.router-link-active {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+}
+#app1 .content {
+  border: 1px solid #eee;
+  border-top: none;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}

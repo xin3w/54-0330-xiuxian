@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+
+</head>
+
+<body id="">
+  
+  <div class="alert alert-success" style="font-size:0.3rem;">
+    <strong>当前屏幕宽度:</strong> <span id="w">123</span>
+    <hr>
+    <strong>当前屏幕高度:</strong> <span id="h">123</span>
+  </div>
+  
+  <script>
+  $(function () {
+    $.getWH()
+  });
+  $(window).on('resize', function () {
+    $.getWH()
+  });
+  $.getWH = function(){
+    $('#w').html($(window).width())
+    $('#h').html($(window).height())
+  }
+  </script>
+</body>
+
+</html>

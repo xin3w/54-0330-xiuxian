@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+  <!-- 引入layui -->
+  <link rel="stylesheet" href="./assets/libs/layui2.5.6/css/layui.css">
+  <script src="./assets/libs/layui2.5.6/layui.js"></script>
+  <!-- 引用vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body id="">
+  <div class="layui-container" id="app">
+    <div class="layui-row">
+      <div class="">
+        <table class="layui-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" name="" title="" v-model="allSelect" @change="all"></th>
+              <th>图片</th>
+              <th>名称</th>
+              <th>单价</th>
+              <th>数量</th>
+              <th>合计</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for='(item,index) in products'>
+              <td><input type="checkbox" lay-skin="primary" v-model="item.isSelected" @change="iSelected"></td>
+              <td><img :src="item.imgUrl" alt=""></td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td><input type="number" style="width:50px;" min="1" v-model.number="item.count" class="layui-input"></td>
+              <td>{{item.price*item.count | fixed(2)}}</td>
+              <td><button class="layui-btn" @click="remove(index)">删除</button></td>
+            </tr>
+            <tr>
+              <td><b>总计：</b></td>
+              <td colspan="6" style="color:red">{{amount | fixed(2)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      allSelect: false,
+      products: [
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=ff0000', name: '产品名称一', price: 100, count: 1 },
+        { isSelected: false, imgUrl: 'https://iph.href.lu/100x100?fg=ffffff&bg=00ff00', name: '产品名称二', price: 150, count: 1 }
+      ]
+    },
+    filters: {
+      fixed(value, num) {
+        return '￥' + value.toFixed(num) + ' 元'
+      }
+    },
+    computed: {
+      amount() {
+        return this.products.reduce((prev, next) => {
+          return prev + (next.isSelected ? next.price * next.count : 0)
+        }, 0)
+      }
+    },
+    methods: {
+      remove(index) {
+        console.log(index)
+        this.products.splice(index, 1)
+      },
+      all() {
+        this.products.forEach((p) => {
+          p.isSelected = this.allSelect
+        })
+      },
+      iSelected() {
+        this.allSelect = this.products.every((p) => {
+          return p.isSelected
+        })
+      }
+
+    }
+  })
+</script>
+
+</html>

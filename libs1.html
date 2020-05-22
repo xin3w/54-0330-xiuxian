@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- 库测试 -->
+  <link rel="stylesheet" href="./assets/libs/swiper2/idangerous.swiper.css">
+  <script src="./assets/libs/swiper2/idangerous.swiper.min.js"></script>
+</head>
+
+<body id="">
+  <div class="container">
+
+    <div class="alert alert-info">
+      <div class="swiper-container swiper2-demo">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">1</div>
+          <div class="swiper-slide">2</div>
+          <div class="swiper-slide">3</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <script>
+    window.onload = function () {
+      var swiper = new Swiper('.swiper-container', {
+        initialSlide :2,
+        autoplay: 5000,//可选选项，自动滑动
+        loop: true,//可选选项，开启循环
+        speed: 1000,
+        autoplayDisableOnInteraction: false, // 用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay
+        mode: 'vertical',
+        slidesPerView: 2, // 设置slider容器能够同时显示的slides数量
+        slidesPerGroup: 2, // 定义slides的数量多少为一组。
+        updateOnImagesReady: true, // 内部有图时，应选择些项，未证实
+        visibilityFullFit: true, // 如果启用，仅有“可视”的slides会最后适应容器的大小 产教最后一个slide的footer
+
+        pagination : '.pagination',
+        paginationClickable :true
+      })
+    }
+  </script>
+</body>
+
+</html>

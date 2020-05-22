@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- 引用vue及路由 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+  <div class="container" id="app1">
+    <div class="nav">
+      <router-link to="/page1">页面一</router-link>
+      <router-link to="/page2">页面二</router-link>
+      <router-link to="/page3">页面三</router-link>
+      <router-link to="/page4">页面四</router-link>
+    </div>
+    <div class="content">
+      <router-view></router-view>
+    </div>
+
+  </div>
+
+  <template id="page1">
+    <div>{{page1}}</div>
+  </template>
+  <template id="page2">
+    <div>page2</div>
+  </template>
+  <template id="page3">
+    <div>page3</div>
+  </template>
+  <template id="page4">
+    <div>
+      <h3>page4</h3>
+      <router-link to="/page4/about">about</router-link>
+      <router-link to="/page4/contact">contact</router-link>
+      <router-view></router-view>
+    </div>
+  </template>
+  <template id="about">
+    <div>about</div>
+  </template>
+  <template id="contact">
+    <div>contact</div>
+  </template>
+
+
+  <script>
+    var page1 = {
+      template: '#page1',
+      data() {
+        return {
+          page1: 'page1'
+        }
+      }
+    }
+    var page2 = {
+      template: '#page2'
+    }
+    var page3 = {
+      template: '#page3'
+    }
+    var page4 = {
+      template: '#page4'
+    }
+    var about = {
+      template: '#about'
+    }
+    var contact = {
+      template: '#contact'
+    }
+
+    var routeMap = [
+      { path: '*', redirect: '/page1' },
+      { path: '/page1', name: 'page1', component: page1 },
+      { path: '/page2', name: 'page2', component: page2 },
+      { path: '/page3', name: 'page3', component: page3 },
+      {
+        path: '/page4', name: 'page4', component: page4, children: [
+          { path: 'about', component: about },
+          { path: 'contact', component: contact }
+        ]
+      }
+    ]
+    var router = new VueRouter({ routes: routeMap })
+    // router.beforeEach((to,from,next)=>{
+    //   debugger;
+    // })
+    var vm = new Vue({
+      el: '#app1',
+      router
+    })
+    
+  </script>
+
+
+</body>
+
+</html>
